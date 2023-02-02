@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 
 defineProps({
     hospitals: Array,
@@ -24,6 +24,8 @@ defineProps({
                         <div class="container px-5 py-8 mx-auto">
                             <div class="flex pl-4 lg:w-2/3 w-full mx-auto">
                                 <Link
+                                    as="button"
+                                    :href="route('hospitals.create')"
                                     class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                                 >
                                     新規作成

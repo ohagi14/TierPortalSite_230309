@@ -30,7 +30,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Hospitals/Create');
     }
 
     /**
@@ -41,7 +41,14 @@ class HospitalController extends Controller
      */
     public function store(StoreHospitalRequest $request)
     {
-        //
+        Hospital::create([
+            'title' => $request->title,
+            'sub_title' => $request->sub_title,
+            'contents' => $request->contents,
+            'sample_num' => $request->sample_num,
+        ]);
+
+        return to_route('hospitals.index');
     }
 
     /**
