@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreHospitalRequest;
 use App\Http\Requests\UpdateHospitalRequest;
 use App\Models\Hospital;
+use Inertia\Inertia;
 
 class HospitalController extends Controller
 {
@@ -15,7 +16,11 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        $hospitals = Hospital::select('id','title','sample_num','is_selling')->get();
+
+        return Inertia::render('Hospitals/Index',[
+            'hospitals' => $hospitals,
+        ]);
     }
 
     /**
