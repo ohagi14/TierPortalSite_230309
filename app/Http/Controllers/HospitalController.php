@@ -48,7 +48,11 @@ class HospitalController extends Controller
             'sample_num' => $request->sample_num,
         ]);
 
-        return to_route('hospitals.index');
+        return to_route('hospitals.index')
+        ->with([
+            'message' => '登録しました。',
+            'status' => 'success',
+        ]);
     }
 
     /**

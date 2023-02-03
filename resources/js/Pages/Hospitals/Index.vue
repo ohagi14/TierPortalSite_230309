@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import FlashMessage from "@/Components/FlashMessage.vue";
 import { Head, Link } from "@inertiajs/vue3";
 
 defineProps({
@@ -22,7 +23,8 @@ defineProps({
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <section class="text-gray-600 body-font">
                         <div class="container px-5 py-8 mx-auto">
-                            <div class="flex pl-4 lg:w-2/3 w-full mx-auto">
+                            <FlashMessage />
+                            <div class="flex pl-4 my-4 lg:w-2/3 w-full mx-auto">
                                 <Link
                                     as="button"
                                     :href="route('hospitals.create')"
