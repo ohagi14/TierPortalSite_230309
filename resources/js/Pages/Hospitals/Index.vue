@@ -69,7 +69,9 @@ defineProps({
                                             :key="hospital.id"
                                         >
                                             <td class="px-4 py-3">
+                                                <Link class="text-blue-400" :href="route('hospitals.show',{hospital: hospital.id})">
                                                 {{ hospital.id }}
+                                                </Link>
                                             </td>
                                             <td class="px-4 py-3">
                                                 {{ hospital.title }}
@@ -78,7 +80,8 @@ defineProps({
                                                 {{ hospital.sample_num }}
                                             </td>
                                             <td class="px-4 py-3">
-                                                {{ hospital.is_selling }}
+                                                <span v-if="hospital.is_selling === 1">公開中</span>
+                                                <span v-if="hospital.is_selling === 0">非公開</span>
                                             </td>
                                         </tr>
                                     </tbody>

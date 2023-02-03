@@ -1,29 +1,19 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, router, useForm } from "@inertiajs/vue3";
-import { reactive } from "vue";
+import { Head } from "@inertiajs/vue3";
 
 defineProps({
-    errors: Object,
+    hospital: Object,
 });
-
-const form = reactive({
-    title: null,
-    sub_title: null,
-});
-
-const storeHospital = () => {
-    router.post("/hospitals", form);
-};
 </script>
 
 <template>
-    <Head title="動物病院新規登録" />
+    <Head title="動物病院詳細" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                登録
+                動物病院詳細
             </h2>
         </template>
 
@@ -42,22 +32,10 @@ const storeHospital = () => {
                                                     class="leading-7 text-sm text-gray-600"
                                                     >タイトル</label
                                                 >
-                                                <input
-                                                    type="text"
-                                                    id="title"
-                                                    name="title"
-                                                    v-model="form.title"
-                                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                />
                                                 <div
-                                                    class="mt-2"
-                                                    v-if="errors.title"
+                                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                                 >
-                                                    <p
-                                                        class="text-sm text-red-600"
-                                                    >
-                                                        {{ errors.title }}
-                                                    </p>
+                                                    {{ hospital.title }}
                                                 </div>
                                             </div>
                                         </div>
@@ -68,22 +46,10 @@ const storeHospital = () => {
                                                     class="leading-7 text-sm text-gray-600"
                                                     >サブタイトル</label
                                                 >
-                                                <input
-                                                    type="text"
-                                                    id="sub_title"
-                                                    name="sub_title"
-                                                    v-model="form.sub_title"
-                                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                />
                                                 <div
-                                                    class="mt-2"
-                                                    v-if="errors.sub_title"
+                                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                                 >
-                                                    <p
-                                                        class="text-sm text-red-600"
-                                                    >
-                                                        {{ errors.sub_title }}
-                                                    </p>
+                                                    {{ hospital.sub_title }}
                                                 </div>
                                             </div>
                                         </div>
@@ -94,12 +60,11 @@ const storeHospital = () => {
                                                     class="leading-7 text-sm text-gray-600"
                                                     >内容</label
                                                 >
-                                                <textarea
-                                                    id="contents"
-                                                    name="contents"
-                                                    v-model="form.contents"
-                                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                                ></textarea>
+                                                <div
+                                                    class="overflow-y-auto w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                                                >
+                                                    {{ hospital.contents }}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="p-2 w-full">
@@ -109,13 +74,11 @@ const storeHospital = () => {
                                                     class="leading-7 text-sm text-gray-600"
                                                     >サンプル数字</label
                                                 >
-                                                <input
-                                                    type="number"
-                                                    id="sample_num"
-                                                    name="sample_num"
-                                                    v-model="form.sample_num"
+                                                <div
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                />
+                                                >
+                                                    {{ hospital.sample_num }}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="p-2 w-full">

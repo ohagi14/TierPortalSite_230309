@@ -63,7 +63,10 @@ class HospitalController extends Controller
      */
     public function show(Hospital $hospital)
     {
-        //
+        // dd($hospital);
+        return Inertia::render('Hospitals/Show',[
+            'hospital' => $hospital,
+        ]);
     }
 
     /**
