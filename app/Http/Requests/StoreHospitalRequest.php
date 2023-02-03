@@ -24,7 +24,8 @@ class StoreHospitalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'max:50'],
+            'sub_title' => ['max:50'],
         ];
     }
 }

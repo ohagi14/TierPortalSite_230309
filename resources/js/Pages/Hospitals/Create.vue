@@ -1,17 +1,15 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, router } from "@inertiajs/vue3";
+import { Head, router, useForm } from "@inertiajs/vue3";
 import { reactive } from "vue";
 
-// defineProps({
-//     errors: Object,
-// });
+defineProps({
+    errors: Object,
+});
 
 const form = reactive({
     title: null,
     sub_title: null,
-    contents: null,
-    sample_num: null,
 });
 
 const storeHospital = () => {
@@ -51,6 +49,16 @@ const storeHospital = () => {
                                                     v-model="form.title"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                                 />
+                                                <div
+                                                    class="mt-2"
+                                                    v-if="errors.title"
+                                                >
+                                                    <p
+                                                        class="text-sm text-red-600"
+                                                    >
+                                                        {{ errors.title }}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="p-2 w-full">
@@ -67,6 +75,16 @@ const storeHospital = () => {
                                                     v-model="form.sub_title"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                                 />
+                                                <div
+                                                class="mt-2"
+                                                v-if="errors.sub_title"
+                                            >
+                                                <p
+                                                    class="text-sm text-red-600"
+                                                >
+                                                    {{ errors.sub_title }}
+                                                </p>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="p-2 w-full">
@@ -104,7 +122,7 @@ const storeHospital = () => {
                                             <button
                                                 class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                             >
-                                                Button
+                                                登録
                                             </button>
                                         </div>
                                     </div>
