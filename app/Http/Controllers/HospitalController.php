@@ -9,97 +9,111 @@ use Inertia\Inertia;
 
 class HospitalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $hospitals = Hospital::select('id','title','sample_num','is_selling')->get();
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		$hospitals = Hospital::select('id', 'title', 'sample_num', 'is_selling')->get();
 
-        return Inertia::render('Hospitals/Index',[
-            'hospitals' => $hospitals,
-        ]);
-    }
+		return Inertia::render('Hospitals/Index', [
+			'hospitals' => $hospitals,
+		]);
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return Inertia::render('Hospitals/Create');
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		return Inertia::render('Hospitals/Create');
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreHospitalRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreHospitalRequest $request)
-    {
-        Hospital::create([
-            'title' => $request->title,
-            'sub_title' => $request->sub_title,
-            'contents' => $request->contents,
-            'sample_num' => $request->sample_num,
-        ]);
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \App\Http\Requests\StoreHospitalRequest  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(StoreHospitalRequest $request)
+	{
+		Hospital::create([
+			'title' => $request->title,
+			'sub_title' => $request->sub_title,
+			'contents' => $request->contents,
+			'sample_num' => $request->sample_num,
+		]);
 
-        return to_route('hospitals.index')
-        ->with([
-            'message' => '登録しました。',
-            'status' => 'success',
-        ]);
-    }
+		return to_route('hospitals.index')
+			->with([
+				'message' => '登録しました。',
+				'status' => 'success',
+			]);
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Hospital  $hospital
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Hospital $hospital)
-    {
-        // dd($hospital);
-        return Inertia::render('Hospitals/Show',[
-            'hospital' => $hospital,
-        ]);
-    }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  \App\Models\Hospital  $hospital
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(Hospital $hospital)
+	{
+		// dd($hospital);
+		return Inertia::render('Hospitals/Show', [
+			'hospital' => $hospital,
+		]);
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Hospital  $hospital
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Hospital $hospital)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  \App\Models\Hospital  $hospital
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit(Hospital $hospital)
+	{
+		return Inertia::render('Hospitals/Edit', [
+			'hospital' => $hospital,
+		]);
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateHospitalRequest  $request
-     * @param  \App\Models\Hospital  $hospital
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateHospitalRequest $request, Hospital $hospital)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \App\Http\Requests\UpdateHospitalRequest  $request
+	 * @param  \App\Models\Hospital  $hospital
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(UpdateHospitalRequest $request, Hospital $hospital)
+	{
+		// dd($hospital->title,$request->title);
+		$hospital->title = $request->title;
+		$hospital->sub_title = $request->sub_title;
+		$hospital->contents = $request->contents;
+		$hospital->sample_num = $request->sample_num;
+		$hospital->is_selling = $request->is_selling;
+		$hospital->save();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Hospital  $hospital
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Hospital $hospital)
-    {
-        //
-    }
+		return to_route('hospitals.index')
+			->with([
+				'message' => '更新しました。',
+				'status' => 'update',
+			]);
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  \App\Models\Hospital  $hospital
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy(Hospital $hospital)
+	{
+		//
+	}
 }

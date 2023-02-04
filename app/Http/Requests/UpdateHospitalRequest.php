@@ -13,7 +13,7 @@ class UpdateHospitalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateHospitalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'max:50'],
+            'sub_title' => ['max:50'],
+            'is_selling' => ['required', 'boolean']
         ];
     }
 }
