@@ -114,6 +114,12 @@ class HospitalController extends Controller
 	 */
 	public function destroy(Hospital $hospital)
 	{
-		//
+		$hospital->delete();
+
+		return to_route('hospitals.index')
+			->with([
+				'message' => '削除しました。',
+				'status' => 'danger',
+			]);
 	}
 }
