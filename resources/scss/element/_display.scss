@@ -1,0 +1,140 @@
+.dn {
+	display: none;
+  &-xl {
+		@include xl(max){
+			display: none;
+		}
+	}
+	&-lg {
+		@include lg(max){
+			display: none;
+		}
+	}
+	&-md {
+		@include md(max){
+			display: none;
+		}
+	}
+	&-sm {
+		@include sm(max){
+			display: none;
+		}
+	}
+  &-xs {
+		@include xs(max){
+			display: none;
+		}
+	}
+}
+.db{
+	display: block;
+  &-xl {
+		@include xl(max){
+			display: block;
+		}
+	}
+	&-lg {
+		@include lg(max){
+			display: block;
+		}
+	}
+	&-md {
+		@include md(max){
+			display: block;
+		}
+	}
+	&-sm {
+		@include sm(max){
+			display: block;
+		}
+	}
+  &-xs {
+		@include xs(max){
+			display: block;
+		}
+	}
+}
+.di{
+	display: inline;
+  &-xl {
+		@include xl(max){
+			display: inline;
+		}
+	}
+	&-lg {
+		@include lg(max){
+			display: inline;
+		}
+	}
+	&-md {
+		@include md(max){
+			display: inline;
+		}
+	}
+	&-sm {
+		@include sm(max){
+			display: inline;
+		}
+	}
+  &-xs {
+		@include xs(max){
+			display: inline;
+		}
+	}
+}
+.dib{
+	display: inline-block;
+  &-xl {
+		@include xl(max){
+			display: inline-block;
+		}
+	}
+	&-lg {
+		@include lg(max){
+			display: inline-block;
+		}
+	}
+	&-md {
+		@include md(max){
+			display: inline-block;
+		}
+	}
+	&-sm {
+		@include sm(max){
+			display: inline-block;
+		}
+	}
+  &-xs {
+		@include xs(max){
+			display: inline-block;
+		}
+	}
+}
+.df {
+	display: flex;
+  &-xl {
+		@include xl(max){
+			display: flex;
+		}
+	}
+	&-lg {
+		@include lg(max){
+			display: flex;
+		}
+	}
+	&-md {
+		@include md(max){
+			display: flex;
+		}
+	}
+	&-sm {
+		@include sm(max){
+			display: flex;
+		}
+	}
+  &-xs {
+		@include xs(max){
+			display: flex;
+		}
+	}
+}

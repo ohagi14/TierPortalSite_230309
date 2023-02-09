@@ -1,5 +1,4 @@
-body{
-	h1{
-		color: red;
-	}
-}
+@import '_base/_import';
+@import 'common/_import';
+@import 'pages/_import';
+@import "element/_import";

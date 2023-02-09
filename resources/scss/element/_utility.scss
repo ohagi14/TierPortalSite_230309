@@ -1,0 +1,82 @@
+.mx {
+  margin-inline: auto;
+}
+.mt60 {
+  margin-top: 3.75rem;
+}
+
+.text-center{
+	text-align: center;
+}
+.text-left{
+	text-align: left;
+}
+.text-right{
+	text-align: right;
+}
+
+//テキストオーバー三点リーダー
+.o2{
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+//カウントcss
+.reset {
+	counter-reset: cut;
+	&-item {
+		position: relative;
+		z-index: 1;
+		&::before {
+			counter-increment: cut;
+			content: counter(cut);
+		}
+	}
+}
+//背景 三角
+.t-triangle {
+  background: rgba(#eaeaea, 0.8);
+  position: relative;
+  margin-top: 15rem;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -12.5rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5rem 0 0 100vw;
+    border-color: transparent transparent transparent rgba(#eaeaea, 0.8);
+    transform: scale(-1, 1);
+  }
+}
+.y-triangle {
+  background: rgba(#eaeaea, 0.8);
+  position: relative;
+  margin-top: 17.5rem;
+  margin-bottom: 17.5rem;
+  &::before,&::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12.5rem 0 0 100vw;
+    border-color: transparent transparent transparent rgba(#eaeaea, 0.8);
+  }
+  &::before{
+    top: -12.5rem;
+    transform: scale(-1, 1);
+  }
+  &::after{
+    bottom: -12.5rem;
+    transform: scale(-1, -1);
+  }
+}
+
+.pr{
+	position: relative;
+}

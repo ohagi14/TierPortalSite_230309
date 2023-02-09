@@ -1,0 +1,12 @@
+._VisuallyHidden {
+  @include visually-hidden;
+}
+// Layout
+.container {
+  @include container;
+}
+
+
+// color
+@include color(main);
+@include color(sub);

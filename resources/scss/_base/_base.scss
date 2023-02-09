@@ -1,0 +1,65 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+*::before,
+*::after {
+	display: inline-block;
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+html {
+  @extend .nscj-400;
+	overflow-wrap: break-word;
+	overflow-x: hidden;
+	text-size-adjust: 100%;
+	letter-spacing: calc(50 / 1000) + em;
+}
+body {
+	// overflow: hidden;
+	line-height: 1.8;
+	background: white;
+	position: relative;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	&:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+	//リンクを一度でも踏んでイタ場合の色
+	&:visited {
+		// color: var(--linkVisited);
+	}
+	&:active {
+		// color: var(--linkActice);
+	}
+}
+ul,ol{
+	list-style: none;
+}
+input{
+	color: inherit;
+}
+[type=button],[type=reset],[type=submit],button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer
+}
+img {
+  max-width: 100%;
+  margin: 0;
+  display: block;
+}
+figure{
+	margin: 0;
+}
