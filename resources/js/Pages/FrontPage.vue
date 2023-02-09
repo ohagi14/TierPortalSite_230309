@@ -6,7 +6,7 @@ import LayoutBase from "@/components/layouts/LayoutBase.vue";
 	<Head title="Topページ" />
 	<LayoutBase>
 		<template #header>
-			<h2>header</h2>
+			<h1>header</h1>
 		</template>
 		<template #heading>
 			<h3>heading</h3>
