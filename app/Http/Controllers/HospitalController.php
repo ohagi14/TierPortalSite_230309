@@ -16,7 +16,10 @@ class HospitalController extends Controller
 	 */
 	public function index()
 	{
-		$hospitals = Hospital::select('id', 'title', 'sample_num', 'is_selling')->get();
+		// $g = Hospital::select('id', 'title', 'sample_num', 'is_selling')->get();
+		// $gt = Hospital::select('id', 'title', 'sample_num', 'is_selling')->paginate(2);
+		// dd($g,$gt);
+		$hospitals = Hospital::select('id', 'title', 'sample_num', 'is_selling')->paginate(2);
 
 		return Inertia::render('Hospitals/Index', [
 			'hospitals' => $hospitals,
