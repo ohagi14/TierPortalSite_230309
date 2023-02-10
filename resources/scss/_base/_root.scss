@@ -1,11 +1,24 @@
-:root{
-	--main: #0A152C;
-	--mainSecond: #4C5360;
-	--sub: #FFEC00;
+:root {
+	--main: #FA5D18;
+	--mainSecond: #feb42f;
+	--sub: #ffec00;
 	--subSecond: #cbc56d;
 
-	--line: #06C755;
-	--facebook: #1F447F;
-	--twitter: #0986CC;
-	--instagram: #D32B7B;
+	--gr1:#ff6753;
+	--gr2:#feb42f;
+
+	--line: #06c755;
+	--facebook: #1f447f;
+	--twitter: #0986cc;
+	--instagram: #d32b7b;
+}
+
+// color
+@include color(main);
+@include color(sub);
+
+// グラデーション
+.bgg {
+	background: var(--gr1);
+	background: linear-gradient(0deg, var(--gr1) 0%, var(--gr2) 100%);
 }

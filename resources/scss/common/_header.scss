@@ -1,0 +1,47 @@
+.header {
+	position: relative;
+	z-index: 999;
+	.container{
+		max-width: 1920px;
+	}
+	.logo {
+		border-radius: 0 0 20px 0;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 15px 25px;
+		@extend .s3;
+		&:hover{
+			background: var(--mainSecond);
+		}
+	}
+	nav{
+		padding: 16px 0;
+		display: flex;
+		justify-content: flex-end;
+		column-gap: 32px;
+		margin-right: 42px;
+		a{
+			@extend .s3;
+			position: relative;
+			font-size: 14px;
+			letter-spacing: calc(80 / 1000)+em;
+			&::after{
+				content: '';
+				width: 0;
+				height: 2px;
+				background: var(--mainSecond);
+				@extend .s3;
+				position: absolute;
+				bottom: -1px;
+				left: 0;
+			}
+			&:hover{
+				&::after{
+					width: 100%;
+				}
+			}
+		}
+	}
+}

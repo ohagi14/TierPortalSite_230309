@@ -1,22 +1,21 @@
 <template>
-	<header>
+	<template v-if="$slots.header">
 		<slot name="header"></slot>
-	</header>
-	<main>
+	</template>
+	<main class="main">
 		<template v-if="$slots.breadcrumb">
 			<div class="hidden sm:block">
 				<slot name="breadcrumb"></slot>
 			</div>
 		</template>
-		<section>
-			<template v-if="$slots.heading">
-				<slot name="heading"></slot>
-			</template>
+		<template v-if="$slots.heading">
+			<slot name="heading"></slot>
+		</template>
 
-			<slot name="contents"></slot>
-		</section>
+		<slot name="contents"></slot>
 	</main>
-
-	<slot v-if="$slots.footer" name="footer"></slot>
+	<template v-if="$slots.footer">
+		<slot name="footer"></slot>
+	</template>
 	<slot v-if="$slots.aside" name="aside"></slot>
 </template>

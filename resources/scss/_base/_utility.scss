@@ -5,8 +5,3 @@
 .container {
   @include container;
 }
-
-
-// color
-@include color(main);
-@include color(sub);
