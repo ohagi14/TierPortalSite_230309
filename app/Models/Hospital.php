@@ -23,7 +23,8 @@ class Hospital extends Model
 			if (Hospital::where('title', 'like', $input . '%')
 				->orWhere('sub_title', 'like', $input . '%')->exists()
 			) {
-				return $query->where('title', 'like', $input . '%');
+				return $query->where('title', 'like', $input . '%')
+					->orWhere('sub_title', 'like', $input . '%');
 			}
 		}
 	}

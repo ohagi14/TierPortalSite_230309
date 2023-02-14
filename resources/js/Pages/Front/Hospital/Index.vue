@@ -1,18 +1,14 @@
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, router } from "@inertiajs/vue3";
 import { ref } from "vue";
 import Header from "@/Components/Common/Header.vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
 import "tw-elements";
 
-defineProps({
-	hospitals: Object,
-});
 const search = ref("");
-
 const searchHospitals = () => {
-	Inertia.get(route("hospital", { search: search.value }));
+	route.push(route("HospitalSearch", { s: search.value }));
 };
 </script>
 <template>
@@ -24,9 +20,14 @@ const searchHospitals = () => {
 			<section class="search-basic">
 				<div class="container">
 					<input type="text" name="search" v-model="search" />
-					<button class="bg-blue-300 text-white p-2" @click="searchHospitals">
+					<Link
+						as="button"
+						:href="route('HospitalSearch')"
+						class="bg-blue-300 text-white p-2"
+						@click="searchHospitals"
+					>
 						検索
-					</button>
+					</Link>
 					<!-- <TabBasic /> -->
 				</div>
 			</section>
