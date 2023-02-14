@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
-import LayoutBase from "@/Components/Layouts/LayoutBase.vue";
+import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
 import "tw-elements";
 </script>

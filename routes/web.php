@@ -26,13 +26,14 @@ use App\Http\Controllers\FrontHospitalController;
 
 /* 管理画面（バックエンド側）
 |--------------------------------------------------------------------------*/
+
 Route::resource('hospitals', HospitalController::class)->middleware(['auth', 'verified']);
 
 /* フロント
 |--------------------------------------------------------------------------*/
 Route::get('/', function () {
 	return Inertia::render('TopPage');
-})->name('toppage');
+})->name('TopPage');
 Route::resource('hospital', FrontHospitalController::class);
 
 

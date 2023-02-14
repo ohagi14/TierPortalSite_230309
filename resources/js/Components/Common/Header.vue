@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/vue3";
 <template>
 	<header class="header">
 		<div class="container">
-			<Link class="logo bg-main max-w-[264px]" :href="route('toppage')">
+			<Link class="logo bg-main max-w-[264px]" :href="route('TopPage')">
 				<img loading="lazy" src="https://placehold.jp/214x65.png" />
 			</Link>
 			<nav>
