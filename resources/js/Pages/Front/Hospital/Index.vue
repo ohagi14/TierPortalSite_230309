@@ -8,7 +8,7 @@ import "tw-elements";
 
 const search = ref("");
 const searchHospitals = () => {
-	route.push(route("HospitalSearch", { s: search.value }));
+	route.post(route("HospitalSearch", { s: search.value }));
 };
 </script>
 <template>
@@ -19,15 +19,12 @@ const searchHospitals = () => {
 			<section class="fs bgg pt-16"></section>
 			<section class="search-basic">
 				<div class="container">
-					<input type="text" name="search" v-model="search" />
-					<Link
-						as="button"
-						:href="route('HospitalSearch')"
-						class="bg-blue-300 text-white p-2"
-						@click="searchHospitals"
-					>
-						検索
-					</Link>
+					<form @submit.prevent="searchHospitals">
+						<input type="text" name="search" v-model="search" />
+						<button class="bg-blue-300 text-white p-2">
+							検索
+						</button>
+					</form>
 					<!-- <TabBasic /> -->
 				</div>
 			</section>
