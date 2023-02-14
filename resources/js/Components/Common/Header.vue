@@ -9,7 +9,7 @@ import { Link } from "@inertiajs/vue3";
 			</Link>
 			<nav>
 				<a href="#">Tierについて</a>
-				<Link :href="route('hospital.index')">動物病院</Link>
+				<Link :href="route('HospitalIndex')">動物病院</Link>
 				<a href="#">トリミングサロン</a>
 				<a href="#">ペットホテル</a>
 				<a href="#">飲食店</a>

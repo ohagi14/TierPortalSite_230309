@@ -1,8 +1,9 @@
 
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\FrontHospitalController;
+use App\Models\Hospital;
 
 
 /*
@@ -14,4 +15,13 @@ use App\Http\Controllers\FrontHospitalController;
 Route::get('/', function () {
 	return Inertia::render('TopPage');
 })->name('TopPage');
-Route::resource('hospital', FrontHospitalController::class);
+
+Route::get('/hospital', function () {
+
+	$hospitals = Hospital::searchHospitals()->select('id', 'title', 'sample_num', 'is_selling')->paginate(50);
+
+	return Inertia::render('Front/Hospital/Index', [
+		'hospitals' => $hospitals,
+	]);
+})->name('HospitalIndex');
+
