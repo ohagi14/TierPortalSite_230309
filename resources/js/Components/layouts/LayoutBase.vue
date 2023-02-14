@@ -1,7 +1,12 @@
+<script setup>
+import Header from "@/Components/Header.vue";
+</script>
+
 <template>
 	<template v-if="$slots.header">
 		<slot name="header"></slot>
 	</template>
+	<Header v-else />
 	<main class="main">
 		<template v-if="$slots.breadcrumb">
 			<div class="hidden sm:block">

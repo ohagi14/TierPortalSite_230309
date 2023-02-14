@@ -19,9 +19,12 @@ class HospitalController extends Controller
 		// $g = Hospital::select('id', 'title', 'sample_num', 'is_selling')->get();
 		// $gt = Hospital::select('id', 'title', 'sample_num', 'is_selling')->paginate(2);
 		// dd($g,$gt);
-		$hospitals = Hospital::select('id', 'title', 'sample_num', 'is_selling')->paginate(2);
 
-		return Inertia::render('Hospitals/Index', [
+		$hospitals = Hospital::searchHospitals()
+			->select('id', 'title', 'sample_num', 'is_selling')->paginate(50);
+		// dd($hospitals);
+
+		return Inertia::render('Admin/Hospitals/Index', [
 			'hospitals' => $hospitals,
 		]);
 	}
@@ -33,7 +36,7 @@ class HospitalController extends Controller
 	 */
 	public function create()
 	{
-		return Inertia::render('Hospitals/Create');
+		return Inertia::render('Admin/Hospitals/Create');
 	}
 
 	/**
@@ -67,7 +70,7 @@ class HospitalController extends Controller
 	public function show(Hospital $hospital)
 	{
 		// dd($hospital);
-		return Inertia::render('Hospitals/Show', [
+		return Inertia::render('Admin/Hospitals/Show', [
 			'hospital' => $hospital,
 		]);
 	}
@@ -80,7 +83,7 @@ class HospitalController extends Controller
 	 */
 	public function edit(Hospital $hospital)
 	{
-		return Inertia::render('Hospitals/Edit', [
+		return Inertia::render('Admin/Hospitals/Edit', [
 			'hospital' => $hospital,
 		]);
 	}

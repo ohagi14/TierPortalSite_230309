@@ -4,7 +4,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+/* 管理画面
+|--------------------------------------------------------------------------*/
 use App\Http\Controllers\HospitalController;
+
+/* フロント
+|--------------------------------------------------------------------------*/
+use App\Http\Controllers\FrontHospitalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +24,26 @@ use App\Http\Controllers\HospitalController;
 |
 */
 
+/* 管理画面（バックエンド側）
+|--------------------------------------------------------------------------*/
 Route::resource('hospitals', HospitalController::class)->middleware(['auth', 'verified']);
 
-Route::get('/index', function () {
-	return Inertia::render('FrontPage');
-});
-
+/* フロント
+|--------------------------------------------------------------------------*/
 Route::get('/', function () {
-	return Inertia::render('Welcome', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'laravelVersion' => Application::VERSION,
-		'phpVersion' => PHP_VERSION,
-	]);
-});
+	return Inertia::render('TopPage');
+})->name('toppage');
+Route::resource('hospital', FrontHospitalController::class);
+
+
+// Route::get('/', function () {
+// 	return Inertia::render('Welcome', [
+// 		'canLogin' => Route::has('login'),
+// 		'canRegister' => Route::has('register'),
+// 		'laravelVersion' => Application::VERSION,
+// 		'phpVersion' => PHP_VERSION,
+// 	]);
+// });
 
 Route::get('/dashboard', function () {
 	return Inertia::render('Dashboard');
