@@ -1,0 +1,30 @@
+.tab {
+	background: white;
+	position: relative;
+	box-shadow: 0 0 15px 0 rgba(0,0,0,.16);
+	&-list {
+		display: flex;
+		li{
+			font-size: 18px;
+			padding: 23px;
+			text-align: center;
+			width: calc(100% / 4);
+			border-bottom: solid 3px gray;
+			background: gray;
+			@extend .s3;
+			&:hover{
+				cursor: pointer;
+				background: white;
+				border-bottom: solid 3px var(--mainSecond);
+			}
+		}
+		.active{
+			background: white;
+			border-bottom: solid 3px var(--main);
+		}
+	}
+	&-content {
+		padding: 50px 92px;
+	}
+
+}

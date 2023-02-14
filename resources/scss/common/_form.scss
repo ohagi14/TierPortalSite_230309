@@ -1,0 +1,28 @@
+.i-input{
+	position: relative;
+	// background: white;
+	border-radius: 5px;
+	z-index: 0;
+	&>svg{
+		position: absolute;
+		top: 23px;
+		left: 16px;
+		z-index: -1;
+	}
+	input{
+		padding: 1.25rem 1rem;
+		padding-left: 42px;
+		border-radius: 5px;
+		border-width: 2px;
+		border-color: var(--borderBE);
+		width: 100%;
+		background: none;
+		color: var(--tInput);
+		font-weight: 600;
+		&::placeholder{
+			font-weight: normal;
+			color: var(--placeholder);
+		}
+	}
+}
+

@@ -84,8 +84,8 @@
 }
 
 // Layout｜中央コンテンツ
-@mixin container {
-  width: min(100% - var(--padding, 1.875rem), var(--max-width, 75rem)); //1200px
+@mixin container($padding:1.875rem, $max-width:75rem) {
+  width: min(100% - $padding, $max-width); //1200px
 	margin-inline: auto;
 }
 

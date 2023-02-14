@@ -14,7 +14,7 @@ import "tw-elements";
 				</h1>
 			</section>
 			<section class="search-basic">
-				<div class="container">
+				<div class="l-container w1000">
 					<TabBasic />
 				</div>
 			</section>
