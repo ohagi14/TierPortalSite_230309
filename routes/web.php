@@ -5,14 +5,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/* 管理画面
-|--------------------------------------------------------------------------*/
-use App\Http\Controllers\HospitalController;
-
-/* フロント
-|--------------------------------------------------------------------------*/
-use App\Http\Controllers\FrontHospitalController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,27 +16,14 @@ use App\Http\Controllers\FrontHospitalController;
 |
 */
 
-/* 管理画面（バックエンド側）
-|--------------------------------------------------------------------------*/
-
-Route::resource('hospitals', HospitalController::class)->middleware(['auth', 'verified']);
-
-/* フロント
-|--------------------------------------------------------------------------*/
-Route::get('/', function () {
-	return Inertia::render('TopPage');
-})->name('TopPage');
-Route::resource('hospital', FrontHospitalController::class);
-
-
-// Route::get('/', function () {
-// 	return Inertia::render('Welcome', [
-// 		'canLogin' => Route::has('login'),
-// 		'canRegister' => Route::has('register'),
-// 		'laravelVersion' => Application::VERSION,
-// 		'phpVersion' => PHP_VERSION,
-// 	]);
-// });
+Route::get('/welcome', function () {
+	return Inertia::render('Welcome', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'laravelVersion' => Application::VERSION,
+		'phpVersion' => PHP_VERSION,
+	]);
+});
 
 Route::get('/dashboard', function () {
 	return Inertia::render('Dashboard');
@@ -57,3 +36,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/front.php';
