@@ -8,6 +8,10 @@
 		top: 23px;
 		left: 16px;
 		z-index: -1;
+		&:not(:first-of-type){
+			left: auto;
+			right: 16px;
+		}
 	}
 	input{
 		padding: 1.25rem 1rem;
@@ -22,6 +26,11 @@
 		&::placeholder{
 			font-weight: normal;
 			color: var(--placeholder);
+		}
+	}
+	&.i-plus{
+		input{
+			padding-right: 42px;
 		}
 	}
 }
