@@ -1,0 +1,21 @@
+.c-title {
+	letter-spacing: calc(80 / 1000) + em;
+	h2 {
+		font-weight: bold;
+		font-size: 28px;
+		position: relative;
+		padding-left: 38px;
+		svg{
+			position: absolute;
+			top: 7px;
+			left: 0;
+			width: 30px;
+			height: 24px;
+			transform: rotate(-12deg);
+		}
+	}
+	p{
+		font-size: 14px;
+		font-weight: 400;
+	}
+}

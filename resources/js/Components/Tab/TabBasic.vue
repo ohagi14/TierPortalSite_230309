@@ -6,7 +6,7 @@ import i_Others from "@/Components/Icon/Others.vue";
 import i_Plus from "@/Components/Icon/Plus.vue";
 </script>
 <template>
-	<div class="tab top-[-225px]">
+	<div class="tab mt-[-225px]">
 		<ul class="tab-list">
 			<li class="active">動物病院</li>
 			<li>トリミングサロン</li>
