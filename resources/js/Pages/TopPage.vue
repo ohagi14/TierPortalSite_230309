@@ -8,12 +8,12 @@ import Card from "@/Components/Common/Card.vue";
 import Prefectures from "@/Components/Parts/Prefectures.vue";
 
 defineProps({
-	prefs: Array,
+	prefectures: Array,
 });
 </script>
 <template>
 	<Head title="Topページ" />
-	<Prefectures :prefs="prefs" />
+	<Prefectures :prefectures="prefectures" />
 	<LayoutBase>
 		<template #contents>
 			<section class="fs bgg h-[603px] pt-16">

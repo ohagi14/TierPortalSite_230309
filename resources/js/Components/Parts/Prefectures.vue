@@ -1,18 +1,21 @@
 <script setup>
 defineProps({
-	prefs: Array,
+	prefectures: Array,
 });
 
 </script>
 <template>
-	<ul class="pl-10" v-for="(pref, i) in prefs" v-bind:key="pref.id">
+	<ul>
+		<li v-for="pref in prefectures" v-bind:key="pref.id">{{ pref.name }}</li>
+	</ul>
+	<ul class="pl-10" v-for="(pref, i) in prefectures" v-bind:key="pref.id">
 		<li>{{ pref.name }}</li>
 		<ul class="cities pl-4">
-			<template v-for="(cities, n) in prefs[i].cities" v-bind:key="cities.id">
+			<template v-for="(cities, n) in prefectures[i].cities" v-bind:key="cities.id">
 				<li v-if="cities.words">
 					{{ cities.name }}
 					<template
-						v-for="words in prefs[i].cities[n].words"
+						v-for="words in prefectures[i].cities[n].words"
 						v-bind:key="words.id"
 					>
 						<li class="pl-4">

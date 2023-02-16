@@ -15,7 +15,7 @@ use App\Models\Hospital;
 
 Route::get('/', function () {
 	return Inertia::render('TopPage', [
-		'prefs' => config('pref'),
+		'prefectures' => config('prefectures'),
 	]);
 })->name('TopPage');
 
