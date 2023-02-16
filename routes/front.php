@@ -14,8 +14,7 @@ use App\Models\Hospital;
 */
 
 Route::get('/', function () {
-	return Inertia::render('TopPage',[
-		// 'pref' => dd(config('pref.0.cities.1.name')),
+	return Inertia::render('TopPage', [
 		'prefs' => config('pref'),
 	]);
 })->name('TopPage');
