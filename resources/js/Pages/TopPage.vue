@@ -5,9 +5,24 @@ import TabBasic from "@/Components/Tab/TabBasic.vue";
 import "tw-elements";
 import i_Doubutu from "@/Components/Icon/Doubutu.vue";
 import Card from "@/Components/Common/Card.vue";
+
+defineProps({
+	pref: Array,
+});
 </script>
 <template>
 	<Head title="Topページ" />
+	<ul v-for="(prefs, i) in pref" v-bind:key="prefs.id">
+		<li>{{ prefs.name }}</li>
+		<ul class="cities pl-4">
+			<template v-for="(cities, n) in pref[i].cities" v-bind:key="cities.id">
+				<li class="-ml-4" v-if="n === 0">{{ prefs.name + "全域" }}</li>
+				<li>
+					{{ cities.name }}
+				</li>
+			</template>
+		</ul>
+	</ul>
 	<LayoutBase>
 		<template #contents>
 			<section class="fs bgg h-[603px] pt-16">

@@ -4,7 +4,7 @@
  * 参考：https://omkz.net/prefectures-data/
  * 取得：https://github.com/hiro9nob/prefectures/blob/main/prefectures_and_city.php
  */
-$prefs = [
+return [
 	[
 		'id' => "01",
 		'name' => "北海道",
