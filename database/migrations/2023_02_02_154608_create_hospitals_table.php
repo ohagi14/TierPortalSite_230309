@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sub_title')->nullable(); //空でもOK
             $table->string('contents')->nullable();
             $table->integer('sample_num')->nullable();
+            $table->string('prefecture');
             $table->boolean('is_selling')->default(true);
             $table->timestamps();
         });

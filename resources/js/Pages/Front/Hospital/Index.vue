@@ -6,12 +6,10 @@ import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
 import Pagination from "@/Components/Pagination.vue";
 
-
 const search = ref("");
 const searchHospitals = () => {
 	router.get(route("HospitalSearch", { s: search.value }));
 };
-
 </script>
 <template>
 	<Head title="Topページ" />

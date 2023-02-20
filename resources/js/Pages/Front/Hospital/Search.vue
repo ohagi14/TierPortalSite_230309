@@ -5,13 +5,20 @@ import Header from "@/Components/Common/Header.vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import Pagination from "@/Components/Pagination.vue";
 
+import i_Search from "@/Components/Icon/Search.vue";
+import i_Japan from "@/Components/Icon/Japan.vue";
+import i_Doubutu from "@/Components/Icon/Doubutu.vue";
+import i_Others from "@/Components/Icon/Others.vue";
+import i_Plus from "@/Components/Icon/Plus.vue";
+
 defineProps({
 	hospitals: Object,
 });
-const search = ref("");
 
+const search = ref("");
+const pre = ref("");
 const searchHospitals = () => {
-	router.get(route("HospitalSearch", { s: search.value }));
+	router.get(route("HospitalSearch", { s: search.value, p: pre.value }));
 };
 </script>
 <template>
@@ -19,13 +26,51 @@ const searchHospitals = () => {
 	<LayoutBase>
 		<Header />
 		<template #contents>
-			<section class="fs bgg pt-16"></section>
+			<section class="mt-16 py-16 bg-blueD8">
+				<div class="l-container">
+					<div class="flex gap-2">
+						<div class="f-search i-input bg-white col-span-2 max-w-[320px]">
+							<input
+								type="search"
+								placeholder="病院名や駅名などを入力してください"
+								name="search"
+								v-model="search"
+							/>
+							<i_Search />
+						</div>
+						<div class="w-full f-japan i-input bg-white i-plus max-w-[210px]">
+							<input
+								type="text"
+								placeholder="都道府県"
+								name="pre"
+								v-model="pre"
+							/>
+							<i_Japan />
+							<i_Plus />
+						</div>
+						<div class="w-full f-doubutu i-input bg-white i-plus max-w-[210px]">
+							<input type="text" placeholder="診療対象動物" />
+							<i_Doubutu />
+							<i_Plus />
+						</div>
+						<div class="w-full f-others i-input bg-white i-plus max-w-[210px]">
+							<input type="text" placeholder="その他条件" />
+							<i_Others />
+							<i_Plus />
+						</div>
+						<button
+							class="bg-main text-white p-2 w-full max-w-[184px]"
+							@click="searchHospitals"
+						>
+							<i_Search color="#fff" />
+							検索する
+						</button>
+					</div>
+				</div>
+			</section>
+
 			<section class="search-basic">
-				<div class="container">
-					<input type="text" name="search" v-model="search" />
-					<button class="bg-blue-300 text-white p-2" @click="searchHospitals">
-						検索
-					</button>
+				<div class="l-container">
 					<table class="table-auto w-full text-left whitespace-no-wrap">
 						<thead>
 							<tr>

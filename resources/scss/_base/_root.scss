@@ -10,6 +10,8 @@
 	--borderBE: #BEC4D1;
 	--borderD5: #d5d5d5;
 
+	--blueD8: #D8DBE3;
+
 	--placeholder: #BEC4D1;
 	--tInput: #101010;
 
@@ -25,6 +27,7 @@
 // color
 @include color(main);
 @include color(sub);
+@include color(blueD8);
 
 // グラデーション
 .bgg {

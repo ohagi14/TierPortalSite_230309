@@ -22,25 +22,36 @@ class HospitalSeeder extends Seeder
                 'sub_title' => 'ドウブツビョウインタイトルイチ',
                 'contents' => '詳細内容',
                 'sample_num' => '100',
+                'prefecture' => '札幌市',
             ],
             [
                 'title' => '動物病院タイトル2',
                 'sub_title' => 'ドウブツビョウインタイトルニ',
                 'contents' => '詳細内容',
                 'sample_num' => '200',
+								'prefecture' => '札幌市中央区',
             ],
             [
                 'title' => '動物病院タイトル３',
                 'sub_title' => 'ドウブツビョウインタイトルサン',
                 'contents' => '詳細内容',
                 'sample_num' => '110',
+								'prefecture' => '札幌市北区',
             ],
             [
-                'title' => '動物病院サンプル',
+                'title' => '動物病院サンプル4',
                 'sub_title' => 'ドウブツビョウインサンプル',
                 'contents' => '詳細内容',
                 'sample_num' => '110',
-            ]
+								'prefecture' => '函館市',
+            ],
+						[
+							'title' => '動物病院サンプル5',
+							'sub_title' => 'ドウブツビョウインサンプル',
+							'contents' => '詳細内容',
+							'sample_num' => '110',
+							'prefecture' => '盛岡市',
+					],
         ]);
     }
 }

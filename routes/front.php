@@ -28,8 +28,7 @@ Route::get('/hospital', function (Request $request) {
 })->name('HospitalIndex');
 
 Route::get('/hospital/search', function (Request $request) {
-
-	$hospitals = Hospital::searchHospitals($request->s)->select('id', 'title', 'sample_num', 'is_selling')->paginate(2);
+	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->select('id', 'title')->paginate(10);
 
 	return Inertia::render('Front/Hospital/Search', [
 		'hospitals' => $hospitals,
