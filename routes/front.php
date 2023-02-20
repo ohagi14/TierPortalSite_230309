@@ -23,7 +23,7 @@ Route::get('/', function () {
 	]);
 })->name('TopPage');
 
-Route::get('/hospital', function () {
+Route::get('/hospital', function (Request $request) {
 	return Inertia::render('Front/Hospital/Index');
 })->name('HospitalIndex');
 

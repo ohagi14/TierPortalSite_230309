@@ -4,12 +4,14 @@ import { ref } from "vue";
 import Header from "@/Components/Common/Header.vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
-import "tw-elements";
+import Pagination from "@/Components/Pagination.vue";
+
 
 const search = ref("");
 const searchHospitals = () => {
-	route.post(route("HospitalSearch", { s: search.value }));
+	router.get(route("HospitalSearch", { s: search.value }));
 };
+
 </script>
 <template>
 	<Head title="Topページ" />
@@ -19,12 +21,11 @@ const searchHospitals = () => {
 			<section class="fs bgg pt-16"></section>
 			<section class="search-basic">
 				<div class="container">
-					<form @submit.prevent="searchHospitals">
-						<input type="text" name="search" v-model="search" />
-						<button class="bg-blue-300 text-white p-2">
-							検索
-						</button>
-					</form>
+					<input type="text" name="search" v-model="search" />
+					<button class="bg-blue-300 text-white p-2" @click="searchHospitals">
+						検索
+					</button>
+
 					<!-- <TabBasic /> -->
 				</div>
 			</section>
