@@ -13,6 +13,10 @@ use App\Models\Hospital;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/test', function () {
+	return Inertia::render('Test');
+});
+
 Route::get('/', function () {
 	return Inertia::render('TopPage', [
 		'prefectures' => config('prefectures'),

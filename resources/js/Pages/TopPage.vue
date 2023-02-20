@@ -6,6 +6,7 @@ import "tw-elements";
 import i_Doubutu from "@/Components/Icon/Doubutu.vue";
 import Card from "@/Components/Common/Card.vue";
 import Prefectures from "@/Components/Parts/Prefectures.vue";
+import Modal from "@/Components/Parts/Modal.vue";
 
 defineProps({
 	prefectures: Array,
@@ -13,7 +14,8 @@ defineProps({
 </script>
 <template>
 	<Head title="Topページ" />
-	<Prefectures :prefectures="prefectures" />
+	<Modal />
+	<!-- <Prefectures :prefectures="prefectures" /> -->
 	<LayoutBase>
 		<template #contents>
 			<section class="fs bgg h-[603px] pt-16">
