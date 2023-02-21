@@ -51,6 +51,7 @@ class HospitalController extends Controller
 			'title' => $request->title,
 			'sub_title' => $request->sub_title,
 			'contents' => $request->contents,
+			'prefecture' => $request->prefecture,
 			'sample_num' => $request->sample_num,
 		]);
 
@@ -101,6 +102,7 @@ class HospitalController extends Controller
 		$hospital->title = $request->title;
 		$hospital->sub_title = $request->sub_title;
 		$hospital->contents = $request->contents;
+		$hospital->prefecture = $request->prefecture;
 		$hospital->sample_num = $request->sample_num;
 		$hospital->is_selling = $request->is_selling;
 		$hospital->save();

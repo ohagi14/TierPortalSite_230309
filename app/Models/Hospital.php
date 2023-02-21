@@ -13,9 +13,9 @@ class Hospital extends Model
 		'title',
 		'sub_title',
 		'contents',
+		'prefecture',
 		'sample_num',
 		'is_selling',
-		'prefecture',
 	];
 
 	public function scopeSearchHospitals($query, $input = null)
@@ -27,16 +27,14 @@ class Hospital extends Model
 			// 	return $query->where('title', 'like', $input . '%')
 			// 		->orWhere('sub_title', 'like', $input . '%');
 			// }
-			if (!empty($input)) {
-				return $query->where('title', 'like', $input . '%');
-			}
+			return $query->where('title', 'like', '%' . $input . '%');
 		}
 	}
 	// 都道府県絞り
 	public function scopePrefecturesHospitals($query, $input = null)
 	{
 		if (!empty($input)) {
-			return $query->where('prefecture', 'like', $input . '%');
+			return $query->whereIn('prefecture', $input);
 		}
 	}
 }

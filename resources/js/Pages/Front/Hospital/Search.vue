@@ -87,12 +87,7 @@ const searchHospitals = () => {
 								<th
 									class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
 								>
-									No.
-								</th>
-								<th
-									class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-								>
-									状態
+									都道府県
 								</th>
 							</tr>
 						</thead>
@@ -110,11 +105,7 @@ const searchHospitals = () => {
 									{{ hospital.title }}
 								</td>
 								<td class="px-4 py-3">
-									{{ hospital.sample_num }}
-								</td>
-								<td class="px-4 py-3">
-									<span v-if="hospital.is_selling === 1">公開中</span>
-									<span v-if="hospital.is_selling === 0">非公開</span>
+									{{ hospital.prefecture }}
 								</td>
 							</tr>
 						</tbody>

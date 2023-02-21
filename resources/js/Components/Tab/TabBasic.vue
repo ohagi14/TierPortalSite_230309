@@ -12,7 +12,14 @@ const hospitalSearch = ref("");
 const hospitalPre = ref("");
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	(hospitalSearch.value || hospitalPre.value) ? router.get(route("HospitalSearch", { s: hospitalSearch.value, p: hospitalPre.value })) : router.get(route("HospitalSearch"));
+	hospitalSearch.value || hospitalPre.value
+		? router.get(
+				route("HospitalSearch", {
+					s: hospitalSearch.value,
+					p: hospitalPre.value,
+				})
+		  )
+		: router.get(route("HospitalSearch"));
 };
 </script>
 <template>
@@ -35,7 +42,13 @@ const searchHospitals = () => {
 			</div>
 			<div class="flex gap-x-6 mt-8">
 				<div class="w-full f-japan i-input i-plus">
-					<input type="text" placeholder="都道府県" name="hospitalPre" v-model="hospitalPre" />
+					<input
+						class="cursor-pointer"
+						type="text"
+						placeholder="都道府県"
+						name="hospitalPre"
+						v-model="hospitalPre"
+					/>
 					<i_Japan />
 					<i_Plus />
 				</div>

@@ -14,7 +14,9 @@ use App\Models\Hospital;
 */
 
 Route::get('/test', function () {
-	return Inertia::render('Test');
+	return Inertia::render('Test', [
+		'prefectures' => config('prefectures'),
+	]);
 });
 
 Route::get('/', function () {
@@ -28,8 +30,9 @@ Route::get('/hospital', function (Request $request) {
 })->name('HospitalIndex');
 
 Route::get('/hospital/search', function (Request $request) {
-
-	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->select('id', 'title')->paginate(10);
+	// dd($request);
+	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->select('id', 'title', 'prefecture')->paginate(10);
+	// $hospitals = Hospital::searchHospitals($request->s)->select('id', 'title', 'prefecture')->paginate(10);
 
 	return Inertia::render('Front/Hospital/Search', [
 		'hospitals' => $hospitals,
