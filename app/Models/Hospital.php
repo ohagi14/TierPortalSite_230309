@@ -28,8 +28,7 @@ class Hospital extends Model
 			// 		->orWhere('sub_title', 'like', $input . '%');
 			// }
 			if (!empty($input)) {
-				return $query->where('title', 'like', $input . '%')
-					->orWhere('sub_title', 'like', $input . '%');
+				return $query->where('title', 'like', $input . '%');
 			}
 		}
 	}
