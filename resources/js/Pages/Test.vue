@@ -5,10 +5,9 @@ import LayoutBase from "@/Components/Common/LayoutBase.vue";
 
 const hospitalSearch = ref("");
 const hospitalPre = ref([]);
-console.log(hospitalPre.value.length);
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	hospitalSearch.value || hospitalPre.value
+	hospitalSearch.value || hospitalPre.value.length !== 0
 		? router.get(
 				route("HospitalSearch", {
 					s: hospitalSearch.value,
@@ -38,7 +37,7 @@ const searchHospitals = () => {
 							type="text"
 							placeholder="都道府県"
 							name="hospitalPre"
-							:value=hospitalPre
+							:value="hospitalPre"
 						/>
 					</div>
 				</div>
@@ -48,8 +47,12 @@ const searchHospitals = () => {
 				>
 					検索する
 				</button>
-				<label>札幌市：<input type="checkbox" value="札幌市" v-model="hospitalPre"></label>
-				<label>函館市<input type="checkbox" value="函館市" v-model="hospitalPre"></label>
+				<label
+					>札幌市：<input type="checkbox" value="札幌市" v-model="hospitalPre"
+				/></label>
+				<label
+					>函館市<input type="checkbox" value="函館市" v-model="hospitalPre"
+				/></label>
 			</div>
 		</template>
 	</LayoutBase>

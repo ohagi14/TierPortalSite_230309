@@ -21,12 +21,9 @@ class Hospital extends Model
 	public function scopeSearchHospitals($query, $input = null)
 	{
 		if (!empty($input)) {
-			// if (Hospital::where('title', 'like', $input . '%')
-			// 	->orWhere('sub_title', 'like', $input . '%')->exists()
-			// ) {
-			// 	return $query->where('title', 'like', $input . '%')
-			// 		->orWhere('sub_title', 'like', $input . '%');
-			// }
+			if (Hospital::where('title', 'like', '%' . $input . '%')->exists()) {
+				return $query->where('title', 'like', '%' . $input . '%');
+			}
 			return $query->where('title', 'like', '%' . $input . '%');
 		}
 	}
@@ -34,6 +31,9 @@ class Hospital extends Model
 	public function scopePrefecturesHospitals($query, $input = null)
 	{
 		if (!empty($input)) {
+			if (Hospital::whereIn('prefecture', $input)->exists()) {
+				return $query->whereIn('prefecture', $input);
+			}
 			return $query->whereIn('prefecture', $input);
 		}
 	}
