@@ -7,12 +7,16 @@ import i_Japan from "@/Components/Icon/Japan.vue";
 import i_Doubutu from "@/Components/Icon/Doubutu.vue";
 import i_Others from "@/Components/Icon/Others.vue";
 import i_Plus from "@/Components/Icon/Plus.vue";
+import i_Hospital from "@/Components/Icon/Hospital.vue";
+
+import iD_En from "@/Components/Icon/En.vue";
+
 
 const hospitalSearch = ref("");
-const hospitalPre = ref("");
+const hospitalPre = ref([]);
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	hospitalSearch.value || hospitalPre.value
+	hospitalSearch.value || hospitalPre.value.length !== 0
 		? router.get(
 				route("HospitalSearch", {
 					s: hospitalSearch.value,
@@ -25,10 +29,13 @@ const searchHospitals = () => {
 <template>
 	<div class="tab mt-[-225px]">
 		<ul class="tab-list">
-			<li class="active">動物病院</li>
-			<li>トリミングサロン</li>
-			<li>ペットホテル</li>
-			<li>飲食店</li>
+			<li class="active font-semibold">
+				<i_Hospital class="mx mb-1" />
+				動物病院
+			</li>
+			<li><iD_En class="mx mb-1.5" />トリミングサロン</li>
+			<li><iD_En class="mx mb-1.5" />ペットホテル</li>
+			<li><iD_En class="mx mb-1.5" />飲食店</li>
 		</ul>
 		<div class="tab-content">
 			<div class="f-search i-input">
@@ -47,7 +54,8 @@ const searchHospitals = () => {
 						type="text"
 						placeholder="都道府県"
 						name="hospitalPre"
-						v-model="hospitalPre"
+						disabled
+						:value="hospitalPre"
 					/>
 					<i_Japan />
 					<i_Plus />

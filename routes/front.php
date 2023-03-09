@@ -19,6 +19,10 @@ Route::get('/test', function () {
 	]);
 });
 
+Route::get('/testemit', function () {
+	return Inertia::render('TestEmit');
+});
+
 Route::get('/', function () {
 	return Inertia::render('TopPage', [
 		'prefectures' => config('prefectures'),

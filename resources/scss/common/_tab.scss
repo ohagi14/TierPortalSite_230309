@@ -9,9 +9,12 @@
 			padding: 23px;
 			text-align: center;
 			width: calc(100% / 4);
-			border-bottom: solid 3px gray;
-			background: gray;
+			border-bottom: solid 3px #D3D3D3;
+			background: #D3D3D3;
 			@extend .s3;
+			&:not(:first-of-type){
+				border-left: solid 1px white;
+			}
 			&:hover{
 				cursor: pointer;
 				background: white;

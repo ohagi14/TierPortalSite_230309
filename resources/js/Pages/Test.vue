@@ -1,10 +1,14 @@
 <script setup>
 import { router } from "@inertiajs/vue3";
-import { ref, reactive } from "vue";
+import { ref, computed } from "vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
+import Modal from "@/Components/Modal.vue";
+import Prefectures from "@/Components/Parts/Prefectures.vue";
 
 const hospitalSearch = ref("");
 const hospitalPre = ref([]);
+
+
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
 	hospitalSearch.value || hospitalPre.value.length !== 0
@@ -16,9 +20,23 @@ const searchHospitals = () => {
 		  )
 		: router.get(route("HospitalSearch"));
 };
+//都道府県モーダル
+const contentModal = ref(false);
+const openModal = () => {
+	contentModal.value = true;
+};
+const closeModal = () => {
+	contentModal.value = false;
+};
+defineProps({
+	prefectures: Array,
+});
 </script>
 
 <template>
+	<Modal :show="contentModal" @close="closeModal">
+		<Prefectures :prefectures="prefectures" />
+	</Modal>
 	<LayoutBase>
 		<template #contents>
 			<div class="l-container mt-16">
@@ -31,12 +49,13 @@ const searchHospitals = () => {
 					/>
 				</div>
 				<div class="flex gap-x-6 mt-8">
-					<div class="w-full f-japan i-input i-plus">
+					<div @click="openModal" class="w-full f-japan i-input i-plus">
 						<input
 							class="cursor-pointer"
 							type="text"
 							placeholder="都道府県"
 							name="hospitalPre"
+							disabled
 							:value="hospitalPre"
 						/>
 					</div>

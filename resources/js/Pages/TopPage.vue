@@ -4,9 +4,10 @@ import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
 import "tw-elements";
 import i_Doubutu from "@/Components/Icon/Doubutu.vue";
+import i_Animal from "@/Components/Icon/Animal.vue";
 import Card from "@/Components/Common/Card.vue";
 import Prefectures from "@/Components/Parts/Prefectures.vue";
-import Modal from "@/Components/Parts/Modal.vue";
+import Modal from "@/Components/Modal.vue";
 
 defineProps({
 	prefectures: Array,
@@ -14,7 +15,6 @@ defineProps({
 </script>
 <template>
 	<Head title="Topページ" />
-	<Modal />
 	<!-- <Prefectures :prefectures="prefectures" /> -->
 	<LayoutBase>
 		<template #contents>
@@ -22,6 +22,9 @@ defineProps({
 				<h1 class="text-center text-white text-lg font-semibold">
 					動物の暮らしをHAPPYにする動物メディア検索サイト
 				</h1>
+				<figure class="mt-14">
+					<i_Animal class="mx" />
+				</figure>
 			</section>
 			<section class="search-basic">
 				<div class="l-container w1000">
