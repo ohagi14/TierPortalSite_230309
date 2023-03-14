@@ -34,7 +34,7 @@ defineProps({
 </script>
 
 <template>
-	<Modal :show="contentModal" @close="closeModal">
+	<Modal :show="contentModal" maxWidth="l-container" @close="closeModal">
 		<Prefectures :prefectures="prefectures" />
 	</Modal>
 	<LayoutBase>

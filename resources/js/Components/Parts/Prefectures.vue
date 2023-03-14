@@ -4,10 +4,10 @@ import { ref } from "vue";
 defineProps({
 	prefectures: Array,
 });
-// const hospitalPre = ref([])
 const emits = defineEmits(["hospitalPre"]);
 const onChangeHospitalPre = () => {
 	emits('hospitalPre',{})
+	console.log('ch')
 }
 </script>
 <template>

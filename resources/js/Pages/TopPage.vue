@@ -1,4 +1,5 @@
 <script setup>
+	import { ref } from "vue";
 import { Head, Link } from "@inertiajs/vue3";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
@@ -12,10 +13,20 @@ import Modal from "@/Components/Modal.vue";
 defineProps({
 	prefectures: Array,
 });
+const contentModal = ref(false);
+const openModal = () => {
+	contentModal.value = true;
+};
+const closeModal = () => {
+	contentModal.value = false;
+};
+
 </script>
 <template>
 	<Head title="Topページ" />
-	<!-- <Prefectures :prefectures="prefectures" /> -->
+	<Modal :show="contentModal" @close="closeModal">
+		<Prefectures :prefectures="prefectures" />
+	</Modal>
 	<LayoutBase>
 		<template #contents>
 			<section class="fs bgg h-[603px] pt-16">
@@ -28,7 +39,7 @@ defineProps({
 			</section>
 			<section class="search-basic">
 				<div class="l-container w1000">
-					<TabBasic />
+					<TabBasic @openModal="openModal"/>
 				</div>
 			</section>
 			<section class="pickup mt-16">

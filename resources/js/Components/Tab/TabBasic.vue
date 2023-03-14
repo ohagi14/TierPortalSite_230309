@@ -11,6 +11,8 @@ import i_Hospital from "@/Components/Icon/Hospital.vue";
 
 import iD_En from "@/Components/Icon/En.vue";
 
+import Modal from "@/Components/Modal.vue";
+import Prefectures from "@/Components/Parts/Prefectures.vue";
 
 const hospitalSearch = ref("");
 const hospitalPre = ref([]);
@@ -25,6 +27,12 @@ const searchHospitals = () => {
 		  )
 		: router.get(route("HospitalSearch"));
 };
+
+//都道府県モーダル
+// > thisなどでクリック対象変更
+const emit = defineEmits(["openModal"]);
+const clickModal = () => emit("openModal");
+
 </script>
 <template>
 	<div class="tab mt-[-225px]">
@@ -48,7 +56,7 @@ const searchHospitals = () => {
 				<i_Search />
 			</div>
 			<div class="flex gap-x-6 mt-8">
-				<div class="w-full f-japan i-input i-plus">
+				<div @click="clickModal" class="w-full f-japan i-input i-plus">
 					<input
 						class="cursor-pointer"
 						type="text"
