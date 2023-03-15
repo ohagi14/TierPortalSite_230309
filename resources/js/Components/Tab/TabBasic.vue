@@ -14,29 +14,27 @@ import iD_En from "@/Components/Icon/En.vue";
 import Modal from "@/Components/Modal.vue";
 import Prefectures from "@/Components/Parts/Prefectures.vue";
 
+defineProps({
+	PrefecturesData: Array,
+});
+
 const hospitalSearch = ref("");
 const hospitalPre = ref([]);
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	hospitalSearch.value || hospitalPre.value.length !== 0
+	hospitalSearch.value || PrefecturesData.length !== 0
 		? router.get(
 				route("HospitalSearch", {
 					s: hospitalSearch.value,
-					p: hospitalPre.value,
+					p: PrefecturesData,
 				})
 		  )
 		: router.get(route("HospitalSearch"));
 };
-
 //都道府県モーダル
 // > thisなどでクリック対象変更
 const emit = defineEmits(["openModal"]);
 const clickModal = () => emit("openModal");
-
-defineProps({
-	checkValue: Array,
-});
-
 
 </script>
 <template>
@@ -68,7 +66,7 @@ defineProps({
 						placeholder="都道府県"
 						name="hospitalPre"
 						disabled
-						:value="hospitalPre"
+						:value="PrefecturesData"
 					/>
 					<i_Japan />
 					<i_Plus />

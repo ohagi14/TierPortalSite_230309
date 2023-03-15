@@ -20,15 +20,19 @@ const openModal = () => {
 const closeModal = () => {
 	contentModal.value = false;
 };
-const checkValue = ref([])
-const hospitalPre = () => {
-
+const PrefecturesData = ref();
+const hospitalCheck = (data) => {
+	PrefecturesData.value = data.checkValue.value;
+	console.log(PrefecturesData.value)
 };
 </script>
 <template>
 	<Head title="Topページ" />
 	<Modal :show="contentModal" @close="closeModal">
-		<Prefectures :prefectures="prefectures" />
+		<Prefectures
+			:prefectures="prefectures"
+			@hospitalCheck="hospitalCheck"
+		/>
 	</Modal>
 	<LayoutBase>
 		<template #contents>
@@ -42,7 +46,7 @@ const hospitalPre = () => {
 			</section>
 			<section class="search-basic">
 				<div class="l-container w1000">
-					<TabBasic @openModal="openModal" />
+					<TabBasic @openModal="openModal" :PrefecturesData="PrefecturesData"/>
 				</div>
 			</section>
 			<section class="pickup mt-16">

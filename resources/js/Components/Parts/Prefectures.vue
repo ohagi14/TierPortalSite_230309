@@ -4,11 +4,11 @@ import { ref } from "vue";
 defineProps({
 	prefectures: Array,
 });
-const checkValue = ref([])
-const emits = defineEmits(["hospitalPre"]);
-const onChangeHospitalPre = (checkValue) => {
-	emits('hospitalPre',checkValue)
-}
+const checkValue = ref([]);
+const emit = defineEmits(["hospitalCheck"]);
+const onChangeHospitalPre = () => {
+	emit("hospitalCheck", { checkValue });
+};
 </script>
 <template>
 	<aside class="prefectures">
@@ -16,7 +16,11 @@ const onChangeHospitalPre = (checkValue) => {
 		<div class="wrap">
 			<div class="prefectures-tab">
 				<ul>
-					<li class="font-semibold" v-for="pref in prefectures" v-bind:key="pref.id">
+					<li
+						class="font-semibold"
+						v-for="pref in prefectures"
+						v-bind:key="pref.id"
+					>
 						{{ pref.name }}
 					</li>
 				</ul>
@@ -43,7 +47,6 @@ const onChangeHospitalPre = (checkValue) => {
 									>
 								</li>
 								<template
-									v-if="!words"
 									v-for="words in prefectures[i].cities[n].words"
 									v-bind:key="words.id"
 								>
