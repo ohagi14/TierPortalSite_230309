@@ -12,14 +12,14 @@
 
 .prefectures {
 	margin-top: 20px;
+	border-radius: 20px;
 	.wrap {
-		@extend .l-container;
 		display: flex;
 		border: solid 1px #ccc;
 	}
 	&-tab {
 		overflow-y: auto;
-		min-width: 120px;
+		min-width: 184px;
 		ul {
 			height: 300px;
 		}
@@ -37,6 +37,7 @@
 		height: 300px;
 		border-left: solid 1px #ccc;
 		padding: 1.5em 2.5em;
+		width: calc(100% - 184px);
 		ul{
 
 		}

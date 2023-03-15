@@ -33,6 +33,11 @@ const searchHospitals = () => {
 const emit = defineEmits(["openModal"]);
 const clickModal = () => emit("openModal");
 
+defineProps({
+	checkValue: Array,
+});
+
+
 </script>
 <template>
 	<div class="tab mt-[-225px]">

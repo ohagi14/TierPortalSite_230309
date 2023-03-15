@@ -1,5 +1,5 @@
 <script setup>
-	import { ref } from "vue";
+import { ref } from "vue";
 import { Head, Link } from "@inertiajs/vue3";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import TabBasic from "@/Components/Tab/TabBasic.vue";
@@ -20,7 +20,10 @@ const openModal = () => {
 const closeModal = () => {
 	contentModal.value = false;
 };
+const checkValue = ref([])
+const hospitalPre = () => {
 
+};
 </script>
 <template>
 	<Head title="Topページ" />
@@ -39,7 +42,7 @@ const closeModal = () => {
 			</section>
 			<section class="search-basic">
 				<div class="l-container w1000">
-					<TabBasic @openModal="openModal"/>
+					<TabBasic @openModal="openModal" />
 				</div>
 			</section>
 			<section class="pickup mt-16">
