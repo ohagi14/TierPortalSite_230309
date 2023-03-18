@@ -23,7 +23,6 @@ const closeModal = () => {
 const PrefecturesData = ref();
 const hospitalCheck = (data) => {
 	PrefecturesData.value = data.checkValue.value;
-	console.log(PrefecturesData.value)
 };
 </script>
 <template>

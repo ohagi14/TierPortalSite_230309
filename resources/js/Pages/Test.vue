@@ -11,6 +11,7 @@ const hospitalPre = ref([]);
 
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
+	console.log(hospitalPre.value);
 	hospitalSearch.value || hospitalPre.value.length !== 0
 		? router.get(
 				route("HospitalSearch", {

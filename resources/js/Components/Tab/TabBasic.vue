@@ -14,19 +14,19 @@ import iD_En from "@/Components/Icon/En.vue";
 import Modal from "@/Components/Modal.vue";
 import Prefectures from "@/Components/Parts/Prefectures.vue";
 
-defineProps({
+// 一度変数にsetupする必要あり！
+const props = defineProps({
 	PrefecturesData: Array,
 });
-
-const hospitalSearch = ref("");
-const hospitalPre = ref([]);
+const hospitalSearch = ref();
 const searchHospitals = () => {
+	const hospitalPre = document.getElementById("hospitalPre");
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	hospitalSearch.value || PrefecturesData.length !== 0
+	hospitalSearch.value || props.PrefecturesData
 		? router.get(
 				route("HospitalSearch", {
 					s: hospitalSearch.value,
-					p: PrefecturesData,
+					p: props.PrefecturesData,
 				})
 		  )
 		: router.get(route("HospitalSearch"));
@@ -35,7 +35,6 @@ const searchHospitals = () => {
 // > thisなどでクリック対象変更
 const emit = defineEmits(["openModal"]);
 const clickModal = () => emit("openModal");
-
 </script>
 <template>
 	<div class="tab mt-[-225px]">
@@ -53,7 +52,6 @@ const clickModal = () => emit("openModal");
 				<input
 					type="search"
 					placeholder="病院名や駅名などを入力してください"
-					name="hospitalSearch"
 					v-model="hospitalSearch"
 				/>
 				<i_Search />
@@ -61,11 +59,9 @@ const clickModal = () => emit("openModal");
 			<div class="flex gap-x-6 mt-8">
 				<div @click="clickModal" class="w-full f-japan i-input i-plus">
 					<input
-						class="cursor-pointer"
 						type="text"
+						class="cursor-pointer"
 						placeholder="都道府県"
-						name="hospitalPre"
-						disabled
 						:value="PrefecturesData"
 					/>
 					<i_Japan />
