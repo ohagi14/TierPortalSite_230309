@@ -4,76 +4,53 @@ import { ref, computed } from "vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import Modal from "@/Components/Modal.vue";
 import Prefectures from "@/Components/Parts/Prefectures.vue";
-
-const hospitalSearch = ref("");
-const hospitalPre = ref([]);
-
-
-const searchHospitals = () => {
-	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	console.log(hospitalPre.value);
-	hospitalSearch.value || hospitalPre.value.length !== 0
-		? router.get(
-				route("HospitalSearch", {
-					s: hospitalSearch.value,
-					p: hospitalPre.value,
-				})
-		  )
-		: router.get(route("HospitalSearch"));
-};
-//都道府県モーダル
-const contentModal = ref(false);
-const openModal = () => {
-	contentModal.value = true;
-};
-const closeModal = () => {
-	contentModal.value = false;
-};
-defineProps({
+const props = defineProps({
 	prefectures: Array,
 });
+
+/* 都道府県ジャンル分け表示対応
+/都道府県- タブ切り替え
+/　市区町村- チェックボックス
+*/
+const clickPref = (e) => {
+	const targetTabEn = document.querySelectorAll("[data-tabEn]");
+	for (let i = 0; i < targetTabEn.length; i++) {
+		const tab = targetTabEn[i].dataset.taben;
+		if (tab === e) {
+			targetTabEn[i].style.display = "block";
+		} else {
+			targetTabEn[i].style.display = "none";
+		}
+	}
+};
+
 </script>
 
 <template>
-	<Modal :show="contentModal" maxWidth="l-container" @close="closeModal">
-		<Prefectures :prefectures="prefectures" />
-	</Modal>
-	<LayoutBase>
-		<template #contents>
-			<div class="l-container mt-16">
-				<div class="f-search i-input">
-					<input
-						type="search"
-						placeholder="病院名や駅名などを入力してください"
-						name="hospitalSearch"
-						v-model="hospitalSearch"
-					/>
-				</div>
-				<div class="flex gap-x-6 mt-8">
-					<div @click="openModal" class="w-full f-japan i-input i-plus">
-						<input
-							class="cursor-pointer"
-							type="text"
-							placeholder="都道府県"
-							name="hospitalPre"
-							disabled
-							:value="hospitalPre"
-						/>
-					</div>
-				</div>
-				<button
-					class="btn shadow-md flex items-center justify-center bg-main text-white mt-8 w-[336px] h-16 mx-auto gap-x-2 font-semibold"
-					@click="searchHospitals"
-				>
-					検索する
-				</button>
-				<label
-					>札幌市：<input type="checkbox" value="札幌市" v-model="hospitalPre"
-				/></label>
-				<label
-					>函館市<input type="checkbox" value="函館市" v-model="hospitalPre"
-				/></label>
+	<div class="l-container">
+		<div class="flex">
+			<div class="overflow-x-scroll h-80 w-36">
+				<ul>
+					<li
+						class="cursor-pointer py-2 px-4 hover:bg-blue-100"
+						v-for="pref in prefectures"
+						:key="pref.id"
+						@click="clickPref(pref.en)"
+					>
+						{{ pref.id + ":" + pref.name }}
+					</li>
+				</ul>
 			</div>
-		</template>
-	</LayoutBase>
+			<div class="overflow-x-scroll h-80 w-[calc(100%-144px)]">
+				<ul
+					v-for="(pref, i) in prefectures"
+					:data-tabEn="pref.en"
+				>
+					<li>
+						{{ pref.id + ":" + pref.name }}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </template>

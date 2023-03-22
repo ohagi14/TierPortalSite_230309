@@ -20,7 +20,6 @@ const props = defineProps({
 });
 const hospitalSearch = ref();
 const searchHospitals = () => {
-	const hospitalPre = document.getElementById("hospitalPre");
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
 	hospitalSearch.value || props.PrefecturesData
 		? router.get(
