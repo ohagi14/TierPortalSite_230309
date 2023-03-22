@@ -23,7 +23,6 @@ const clickPref = (e) => {
 		}
 	}
 };
-
 </script>
 
 <template>
@@ -33,22 +32,32 @@ const clickPref = (e) => {
 				<ul>
 					<li
 						class="cursor-pointer py-2 px-4 hover:bg-blue-100"
-						v-for="pref in prefectures"
-						:key="pref.id"
-						@click="clickPref(pref.en)"
+						v-for="prefecture in prefectures"
+						:key="prefecture.id"
+						@click="clickPref(prefecture.en)"
 					>
-						{{ pref.id + ":" + pref.name }}
+						{{ prefecture.id + ":" + prefecture.name }}
 					</li>
 				</ul>
 			</div>
 			<div class="overflow-x-scroll h-80 w-[calc(100%-144px)]">
-				<ul
-					v-for="(pref, i) in prefectures"
-					:data-tabEn="pref.en"
-				>
-					<li>
-						{{ pref.id + ":" + pref.name }}
-					</li>
+				<ul v-for="prefecture in prefectures" :data-tabEn="prefecture.en">
+					<template v-for="cities in prefecture.cities" v-bind:key="cities.id">
+						<template v-if="cities.words && cities.words.length > 0">
+							<li>
+								<span>{{ cities.title }}</span>
+								<ul>
+									<li v-for="ward in cities.words" :key="ward">
+										{{ cities.name + ward.name }}
+									</li>
+								</ul>
+							</li>
+							<li><span>{{ prefecture.title }}</span></li>
+						</template>
+						<template v-else>
+							<li>{{ cities.name }}</li>
+						</template>
+					</template>
 				</ul>
 			</div>
 		</div>
