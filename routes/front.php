@@ -31,11 +31,10 @@ Route::get('/hospital', function (Request $request) {
 })->name('HospitalIndex');
 
 Route::get('/hospital/search', function (Request $request) {
-	// dd($request);
 	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->select('id', 'title', 'prefecture')->paginate(10);
-	// $hospitals = Hospital::searchHospitals($request->s)->select('id', 'title', 'prefecture')->paginate(10);
 
 	return Inertia::render('Front/Hospital/Search', [
+		'prefectures' => config('prefectures'),
 		'hospitals' => $hospitals,
 	]);
 })->name('HospitalSearch');

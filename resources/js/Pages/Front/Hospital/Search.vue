@@ -5,70 +5,36 @@ import Header from "@/Components/Common/Header.vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import Pagination from "@/Components/Pagination.vue";
 
-import i_Search from "@/Components/Icon/Search.vue";
-import i_Japan from "@/Components/Icon/Japan.vue";
-import i_Doubutu from "@/Components/Icon/Doubutu.vue";
-import i_Others from "@/Components/Icon/Others.vue";
-import i_Plus from "@/Components/Icon/Plus.vue";
+import Search from "@/Components/Parts/Search.vue";
+
+import Prefectures from "@/Components/Parts/Prefectures.vue";
+import Modal from "@/Components/Modal.vue";
 
 defineProps({
+	prefectures: Array,
 	hospitals: Object,
 });
-
-const search = ref("");
-const pre = ref("");
-const searchHospitals = () => {
-	router.get(route("HospitalSearch", { s: search.value, p: pre.value }));
+const contentModal = ref(false);
+const openModal = () => {
+	contentModal.value = true;
+};
+const closeModal = () => {
+	contentModal.value = false;
+};
+const PrefecturesData = ref();
+const hospitalCheck = (data) => {
+	PrefecturesData.value = data.checkValue.value;
 };
 </script>
 <template>
-	<Head title="Topページ" />
+	<Head title="一覧ページ" />
+	<Modal :show="contentModal" @close="closeModal">
+		<Prefectures :prefectures="prefectures" @hospitalCheck="hospitalCheck" />
+	</Modal>
 	<LayoutBase>
 		<Header />
 		<template #contents>
-			<section class="mt-16 py-16 bg-blueD8">
-				<div class="l-container">
-					<div class="flex gap-2">
-						<div class="f-search i-input bg-white col-span-2 max-w-[320px]">
-							<input
-								type="search"
-								placeholder="病院名や駅名などを入力してください"
-								name="search"
-								v-model="search"
-							/>
-							<i_Search />
-						</div>
-						<div class="w-full f-japan i-input bg-white i-plus max-w-[210px]">
-							<input
-								type="text"
-								placeholder="都道府県"
-								name="pre"
-								v-model="pre"
-							/>
-							<i_Japan />
-							<i_Plus />
-						</div>
-						<div class="w-full f-doubutu i-input bg-white i-plus max-w-[210px]">
-							<input type="text" placeholder="診療対象動物" />
-							<i_Doubutu />
-							<i_Plus />
-						</div>
-						<div class="w-full f-others i-input bg-white i-plus max-w-[210px]">
-							<input type="text" placeholder="その他条件" />
-							<i_Others />
-							<i_Plus />
-						</div>
-						<button
-							class="bg-main text-white p-2 w-full max-w-[184px]"
-							@click="searchHospitals"
-						>
-							<i_Search color="#fff" />
-							検索する
-						</button>
-					</div>
-				</div>
-			</section>
-
+			<Search @openModal="openModal" :PrefecturesData="PrefecturesData" />
 			<section class="search-basic">
 				<div class="l-container">
 					<table class="table-auto w-full text-left whitespace-no-wrap">
