@@ -93,51 +93,6 @@ const clickPref = (e) => {
 						</li>
 					</ul>
 				</template>
-
-				<!-- <template v-for="prefecture in prefectures" :key="prefecture.id">
-					<ul :data-tabEn="prefecture.en" v-show="prefecture.id == '01'">
-						<template v-for="cities in prefecture.cities" :key="cities.id">
-							<template v-if="cities.words && cities.words.length > 0">
-								<li>
-									<p class="c-TabText80">{{ cities.title }}</p>
-									<ul class="grid grid-cols-4 gap-5 my-5 text-sm">
-										<li v-for="ward in cities.words" :key="ward">
-											<input
-												type="checkbox"
-												:id="'ward-' + ward.id"
-												:value="prefecture.name + ward.name"
-												@change="onChangeHospitalPre"
-												v-model="checkValue"
-											/>
-											<label :for="'ward-' + ward.id">{{
-												cities.name + ward.name
-											}}</label>
-										</li>
-									</ul>
-								</li>
-							</template>
-							<template v-else>
-								<li>
-									<p class="c-TabText80">{{ prefecture.title }}</p>
-									<ul class="grid grid-cols-4 gap-5 my-5 text-sm">
-										<li>
-											<input
-												type="checkbox"
-												:id="'cities-' + cities.id"
-												:value="cities.name"
-												@change="onChangeHospitalPre"
-												v-model="checkValue"
-											/>
-											<label :for="'cities-' + cities.id">{{
-												cities.name
-											}}</label>
-										</li>
-									</ul>
-								</li>
-							</template>
-						</template>
-					</ul>
-				</template> -->
 			</div>
 		</div>
 	</aside>

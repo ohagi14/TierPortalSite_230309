@@ -62,6 +62,7 @@ const clickModal = () => emit("openModal");
 						class="cursor-pointer"
 						placeholder="都道府県"
 						:value="PrefecturesData"
+						disabled
 					/>
 					<i_Japan />
 					<i_Plus />
