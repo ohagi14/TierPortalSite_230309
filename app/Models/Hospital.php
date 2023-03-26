@@ -31,10 +31,12 @@ class Hospital extends Model
 	public function scopePrefecturesHospitals($query, $input = null)
 	{
 		if (!empty($input)) {
-			if (Hospital::whereIn('prefecture', $input)->exists()) {
-				return $query->whereIn('prefecture', $input);
-			}
-			return $query->whereIn('prefecture', $input);
+			$query = $query->where(function ($query) use ($input) {
+				foreach ($input as $value) {
+					$query->orWhere('prefecture', 'like', '%' . $value . '%');
+				}
+			});
 		}
+		return $query;
 	}
 }
