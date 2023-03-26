@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -44,9 +45,3 @@ Route::get('/hospital/search', function (Request $request) {
 	]);
 })->name('HospitalSearch');
 
-Route::get('/hospital/{id}', function (Request $request, Hospital $hospital) {
-	// dd($hospital);
-	return Inertia::render('Front/Hospital/Post', [
-		'hospital' => $hospital,
-	]);
-});
