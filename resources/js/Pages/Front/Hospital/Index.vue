@@ -28,8 +28,5 @@ const searchHospitals = () => {
 				</div>
 			</section>
 		</template>
-		<template #footer>
-			<footer class="footer"></footer>
-		</template>
 	</LayoutBase>
 </template>

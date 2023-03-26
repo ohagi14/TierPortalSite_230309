@@ -80,8 +80,5 @@ const hospitalCheck = (data) => {
 				</div>
 			</section>
 		</template>
-		<template #footer>
-			<footer class="footer"></footer>
-		</template>
 	</LayoutBase>
 </template>
