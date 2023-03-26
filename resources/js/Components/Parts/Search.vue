@@ -38,7 +38,7 @@ const clickModal = () => emit("openModal");
 						type="search"
 						placeholder="病院名や駅名などを入力してください"
 						name="search"
-						v-model="search"
+						v-model="hospitalSearch"
 					/>
 					<i_Search />
 				</div>
