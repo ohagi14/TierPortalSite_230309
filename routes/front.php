@@ -27,7 +27,12 @@ Route::get('/', function () {
 })->name('TopPage');
 
 Route::get('/hospital', function (Request $request) {
-	return Inertia::render('Front/Hospital/Index');
+	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->select('id', 'title', 'prefecture')->paginate(10);
+
+	return Inertia::render('Front/Hospital/Index', [
+		'prefectures' => config('prefectures'),
+		'hospitals' => $hospitals,
+	]);
 })->name('HospitalIndex');
 
 Route::get('/hospital/search', function (Request $request) {
@@ -38,3 +43,10 @@ Route::get('/hospital/search', function (Request $request) {
 		'hospitals' => $hospitals,
 	]);
 })->name('HospitalSearch');
+
+Route::get('/hospital/{id}', function (Request $request, Hospital $hospital) {
+	// dd($hospital);
+	return Inertia::render('Front/Hospital/Post', [
+		'hospital' => $hospital,
+	]);
+});

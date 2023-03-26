@@ -6,6 +6,8 @@ import LayoutBase from "@/Components/Common/LayoutBase.vue";
 import Pagination from "@/Components/Pagination.vue";
 
 import Search from "@/Components/Parts/Search.vue";
+import Media from "@/Components/Common/Media.vue";
+
 
 import Prefectures from "@/Components/Parts/Prefectures.vue";
 import Modal from "@/Components/Modal.vue";
@@ -37,45 +39,11 @@ const hospitalCheck = (data) => {
 			<Search @openModal="openModal" :PrefecturesData="PrefecturesData" />
 			<section class="search-basic">
 				<div class="l-container">
-					<table class="table-auto w-full text-left whitespace-no-wrap">
-						<thead>
-							<tr>
-								<th
-									class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"
-								>
-									ID
-								</th>
-								<th
-									class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-								>
-									タイトル
-								</th>
-								<th
-									class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-								>
-									都道府県
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr v-for="hospital in hospitals.data" :key="hospital.id">
-								<td class="px-4 py-3">
-									<Link
-										class="text-blue-400"
-										:href="route('hospitals.show', { hospital: hospital.id })"
-									>
-										{{ hospital.id }}
-									</Link>
-								</td>
-								<td class="px-4 py-3">
-									{{ hospital.title }}
-								</td>
-								<td class="px-4 py-3">
-									{{ hospital.prefecture }}
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="search-header flex justify-between mt-12">
+						<h2 class="text-3xl font-bold">動物病院の検索結果</h2>
+						<p class="text-sm">検索結果<span class="text-main text-3xl font-bold">{{hospitals.total}}</span>件</p>
+					</div>
+					<Media :hospitals="hospitals"/>
 					<Pagination class="mt-6" :links="hospitals.links"></Pagination>
 				</div>
 			</section>
