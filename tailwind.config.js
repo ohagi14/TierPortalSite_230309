@@ -20,6 +20,7 @@ module.exports = {
 				'sub': '#ffec00',
 				'subSecond': '#cbc56d',
 				'card': '#E5E7EB',
+				'copyright': '#F3F4F6',
 			},
 		},
 	},

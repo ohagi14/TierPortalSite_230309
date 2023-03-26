@@ -1,5 +1,6 @@
 <script setup>
 import Header from "@/Components/Common/Header.vue";
+import Footer from "@/Components/Common/Footer.vue";
 </script>
 
 <template>
@@ -22,5 +23,6 @@ import Header from "@/Components/Common/Header.vue";
 	<template v-if="$slots.footer">
 		<slot name="footer"></slot>
 	</template>
+	<Footer v-else />
 	<slot v-if="$slots.aside" name="aside"></slot>
 </template>

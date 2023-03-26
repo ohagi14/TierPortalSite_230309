@@ -36,7 +36,7 @@ const emit = defineEmits(["openModal"]);
 const clickModal = () => emit("openModal");
 </script>
 <template>
-	<div class="tab mt-[-225px]">
+	<div class="tab mt-[-150px] lg:mt-[-225px]">
 		<ul class="tab-list">
 			<li class="active font-semibold">
 				<i_Hospital class="mx mb-1" />

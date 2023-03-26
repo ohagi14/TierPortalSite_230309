@@ -32,10 +32,11 @@ const hospitalCheck = (data) => {
 			:prefectures="prefectures"
 			@hospitalCheck="hospitalCheck"
 		/>
+
 	</Modal>
 	<LayoutBase>
 		<template #contents>
-			<section class="fs bgg h-[603px] pt-16">
+			<section class="fs bgg h-[603px] pt-32 lg:pt-16">
 				<h1 class="text-center text-white text-lg font-semibold">
 					動物の暮らしをHAPPYにする動物メディア検索サイト
 				</h1>
@@ -54,7 +55,7 @@ const hospitalCheck = (data) => {
 						<h2><i_Doubutu />ピックアップ</h2>
 						<p class="mt-2">今注目の特集やイベント情報</p>
 					</div>
-					<div class="grid grid-cols-3 gap-6 mt-6">
+					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 mt-6">
 						<template v-for="i in 3">
 							<Card />
 						</template>
@@ -67,16 +68,32 @@ const hospitalCheck = (data) => {
 						<h2><i_Doubutu />お役立ちコンテンツ（仮）</h2>
 						<p class="mt-2">ここにサブタイトルが入ります</p>
 					</div>
-					<div class="grid grid-cols-4 gap-6 mt-6">
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-6">
 						<template v-for="i in 4">
 							<Card />
 						</template>
+						<Link :href="route('HospitalSearch')">
+							一覧見る
+						</Link>
 					</div>
 				</div>
 			</section>
-		</template>
-		<template #footer>
-			<footer class="footer"></footer>
+			<section class="useful mt-16">
+				<div class="l-container">
+					<div class="c-title">
+						<h2><i_Doubutu />最近オープンしたお店（仮）</h2>
+						<p class="mt-2">ここにサブタイトルが入ります</p>
+					</div>
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-6">
+						<template v-for="i in 4">
+							<Card />
+						</template>
+						<Link :href="route('HospitalSearch')">
+							一覧見る
+						</Link>
+					</div>
+				</div>
+			</section>
 		</template>
 	</LayoutBase>
 </template>

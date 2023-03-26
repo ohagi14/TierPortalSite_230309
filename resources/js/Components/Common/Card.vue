@@ -1,7 +1,7 @@
 <template>
 	<article class="card border border-card rounded-xl overflow-hidden bg-white">
 		<figure class="card-image">
-			<img loading="lazy" src="https://placehold.jp/384x230.png" />
+			<img class="w-full" loading="lazy" src="https://placehold.jp/384x230.png" />
 		</figure>
 		<div class="card-body p-5">
 			<ul class="category">
