@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreHospitalRequest;
 use App\Http\Requests\UpdateHospitalRequest;
+use App\Models\AnimalCategory;
 use App\Models\Hospital;
 use Inertia\Inertia;
 
@@ -36,7 +37,9 @@ class HospitalController extends Controller
 	 */
 	public function create()
 	{
-		return Inertia::render('Admin/Hospitals/Create');
+		$categories = AnimalCategory::all();
+		// dd($categories);
+		return Inertia::render('Admin/Hospitals/Create', compact('categories'));
 	}
 
 	/**
@@ -47,7 +50,7 @@ class HospitalController extends Controller
 	 */
 	public function store(StoreHospitalRequest $request)
 	{
-		Hospital::create([
+		$hospital = Hospital::create([
 			'title' => $request->title,
 			'sub_title' => $request->sub_title,
 			'contents' => $request->contents,
@@ -55,7 +58,16 @@ class HospitalController extends Controller
 			'sample_num' => $request->sample_num,
 		]);
 
-		return to_route('hospitals.index')
+		$categoryNames = $request->input('categories');
+		dd($categoryNames);
+		if (!empty($categoryNames)) {
+			$categoryIds = AnimalCategory::whereIn('name', $categoryNames)
+				->pluck('id')
+				->toArray();
+			$hospital->categories()->sync($categoryIds);
+		}
+
+		return redirect()->route('hospitals.index')
 			->with([
 				'message' => '登録しました。',
 				'status' => 'success',

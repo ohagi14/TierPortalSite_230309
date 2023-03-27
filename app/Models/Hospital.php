@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AnimalCategory;
 
 class Hospital extends Model
 {
@@ -38,5 +39,11 @@ class Hospital extends Model
 			});
 		}
 		return $query;
+	}
+
+	//動物カテゴリー関連 紐付け
+	public function categories()
+	{
+		return $this->belongsToMany(AnimalCategory::class);
 	}
 }

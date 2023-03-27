@@ -5,6 +5,7 @@ import { reactive } from "vue";
 
 defineProps({
 	errors: Object,
+	categories: Array,
 });
 
 const form = reactive({
@@ -22,9 +23,7 @@ const storeHospital = () => {
 
 	<AuthenticatedLayout>
 		<template #header>
-			<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-				登録
-			</h2>
+			<h2 class="font-semibold text-xl text-gray-800 leading-tight">登録</h2>
 		</template>
 
 		<div class="py-12">
@@ -49,13 +48,8 @@ const storeHospital = () => {
 													v-model="form.title"
 													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 												/>
-												<div
-													class="mt-2"
-													v-if="errors.title"
-												>
-													<p
-														class="text-sm text-red-600"
-													>
+												<div class="mt-2" v-if="errors.title">
+													<p class="text-sm text-red-600">
 														{{ errors.title }}
 													</p>
 												</div>
@@ -75,13 +69,8 @@ const storeHospital = () => {
 													v-model="form.sub_title"
 													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
 												/>
-												<div
-													class="mt-2"
-													v-if="errors.sub_title"
-												>
-													<p
-														class="text-sm text-red-600"
-													>
+												<div class="mt-2" v-if="errors.sub_title">
+													<p class="text-sm text-red-600">
 														{{ errors.sub_title }}
 													</p>
 												</div>
@@ -100,6 +89,34 @@ const storeHospital = () => {
 													v-model="form.contents"
 													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
 												></textarea>
+											</div>
+										</div>
+										<div class="p-2 w-full">
+											<div class="relative">
+												<label
+													for="sample_num"
+													class="leading-7 text-sm text-gray-600"
+													>都道府県</label
+												>
+												<input
+													type="text"
+													id="prefecture"
+													name="prefecture"
+													v-model="form.prefecture"
+													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+												/>
+											</div>
+										</div>
+										<div class="p-2 w-full">
+											<div class="relative">
+												<template v-for="category in categories">
+													<input
+														type="checkbox"
+														value="{{ $category->id }}"
+														name="categories[]"
+													/>
+													<label for="categories[]">{{ category.name }}</label>
+												</template>
 											</div>
 										</div>
 										<div class="p-2 w-full">
