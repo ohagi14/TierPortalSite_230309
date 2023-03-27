@@ -9,3 +9,4 @@ use App\Http\Controllers\HospitalController;
 */
 
 Route::resource('hospitals', HospitalController::class)->middleware(['auth', 'verified']);
+
