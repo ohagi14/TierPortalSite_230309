@@ -30,10 +30,12 @@ const searchHospitals = () => {
 		  )
 		: router.get(route("HospitalSearch"));
 };
-//都道府県モーダル
+//都道府県モーダル｜動物モーダル
 // > thisなどでクリック対象変更
-const emit = defineEmits(["openModal"]);
-const clickModal = () => emit("openModal");
+const emit = defineEmits(["openModal", "openModalAnimal"]);
+const clickModal = (eName) => {
+	emit(eName);
+};
 </script>
 <template>
 	<div class="tab mt-[-150px] lg:mt-[-225px]">
@@ -56,7 +58,7 @@ const clickModal = () => emit("openModal");
 				<i_Search />
 			</div>
 			<div class="flex gap-x-6 mt-8">
-				<div @click="clickModal" class="w-full f-japan i-input i-plus">
+				<div @click="clickModal('openModal')" class="w-full f-japan i-input i-plus">
 					<input
 						type="text"
 						class="cursor-pointer"
@@ -67,7 +69,7 @@ const clickModal = () => emit("openModal");
 					<i_Japan />
 					<i_Plus />
 				</div>
-				<div class="w-full f-doubutu i-input i-plus">
+				<div @click="clickModal('openModalAnimal')" class="w-full f-doubutu i-input i-plus">
 					<input type="text" placeholder="診療対象動物" />
 					<i_Doubutu />
 					<i_Plus />

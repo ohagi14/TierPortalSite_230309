@@ -8,7 +8,6 @@ import Pagination from "@/Components/Pagination.vue";
 import Search from "@/Components/Parts/Search.vue";
 import Media from "@/Components/Common/Media.vue";
 
-
 import Prefectures from "@/Components/Parts/Prefectures.vue";
 import Modal from "@/Components/Modal.vue";
 
@@ -41,9 +40,14 @@ const hospitalCheck = (data) => {
 				<div class="l-container">
 					<div class="search-header flex justify-between mt-12">
 						<h2 class="text-3xl font-bold">動物病院の検索結果</h2>
-						<p class="text-sm">検索結果<span class="text-main text-3xl font-bold">{{hospitals.total}}</span>件</p>
+						<p class="text-sm">
+							検索結果<span class="text-main text-3xl font-bold">{{
+								hospitals.total
+							}}</span
+							>件
+						</p>
 					</div>
-					<Media :hospitals="hospitals"/>
+					<Media :hospitals="hospitals" />
 					<Pagination class="mt-6" :links="hospitals.links"></Pagination>
 				</div>
 			</section>

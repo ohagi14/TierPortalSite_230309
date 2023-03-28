@@ -6,7 +6,11 @@ defineProps({
 });
 </script>
 <template>
-	<article class="media border border-[#707070] mt-8 p-6" v-for="hospital in hospitals.data" :key="hospital.id">
+	<article
+		class="media border border-[#707070] mt-8 p-6"
+		v-for="hospital in hospitals.data"
+		:key="hospital.id"
+	>
 		<div class="media-wrap flex">
 			<div class="media-left">
 				<figure>
@@ -28,8 +32,9 @@ defineProps({
 				</div>
 			</div>
 			<div class="media-right">
-				<h3>{{ hospital.title }}</h3>
-				<p>{{ hospital.prefecture }}</p>
+				<h3>タイトル：{{ hospital.title }}</h3>
+				<p>住所：{{ hospital.prefecture }}</p>
+				<p>動物：{{ hospital.animal_category }}</p>
 				診察時間-テーブル表記
 				<ul class="tag mt-4">
 					<li><a href="#">タグ名</a></li>

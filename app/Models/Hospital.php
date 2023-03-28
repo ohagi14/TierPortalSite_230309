@@ -46,4 +46,16 @@ class Hospital extends Model
 	{
 		return $this->belongsToMany(AnimalCategory::class);
 	}
+	// 動物カテゴリ絞り
+	public function scopeAnimalCategoriesHospitals($query, $input = null)
+	{
+		if (!empty($input)) {
+			$query = $query->where(function ($query) use ($input) {
+				foreach ($input as $value) {
+					$query->orWhere('animal', 'like', '%' . $value . '%');
+				}
+			});
+		}
+		return $query;
+	}
 }
