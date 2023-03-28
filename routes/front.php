@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Hospital;
+use App\Models\AnimalCategory;
 
 
 /*
@@ -23,9 +24,11 @@ Route::get('/test', function () {
 
 Route::get('/', function () {
 	$hospitals = Hospital::all();
+	$animalCategories = AnimalCategory::all();
 	return Inertia::render('TopPage', [
 		'prefectures' => config('prefectures'),
 		'hospitals' => $hospitals,
+		'animalCategories' => $animalCategories,
 	]);
 })->name('TopPage');
 

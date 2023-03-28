@@ -14,6 +14,7 @@ import Modal from "@/Components/Modal.vue";
 defineProps({
 	hospitals: Object,
 	prefectures: Array,
+	animalCategories: Array,
 });
 //都道府県用
 const contentModal = ref(false);
@@ -36,7 +37,7 @@ const closeModalAnimal = () => {
 	contentModalAnimal.value = false;
 };
 const AnimalsData = ref();
-const hospitalCheckAnimal = (data) => {
+const animalCheck = (data) => {
 	AnimalsData.value = data.checkValueAnimal.value;
 };
 </script>
@@ -46,7 +47,7 @@ const hospitalCheckAnimal = (data) => {
 		<Prefectures :prefectures="prefectures" @hospitalCheck="hospitalCheck" />
 	</Modal>
 	<Modal :show="contentModalAnimal" @close="closeModalAnimal">
-		<AnimalCategories :hospitals="hospitals" @hospitalCheckAnimal="hospitalCheckAnimal" />
+		<AnimalCategories :animalCategories="animalCategories" @animalCheck="animalCheck" />
 	</Modal>
 	<LayoutBase>
 		<template #contents>

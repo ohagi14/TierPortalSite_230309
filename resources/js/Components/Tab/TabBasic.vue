@@ -17,15 +17,17 @@ import Prefectures from "@/Components/Parts/Prefectures.vue";
 // 一度変数にsetupする必要あり！
 const props = defineProps({
 	PrefecturesData: Array,
+	AnimalsData: Array,
 });
 const hospitalSearch = ref();
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	hospitalSearch.value || props.PrefecturesData
+	hospitalSearch.value || props.PrefecturesData || props.AnimalsData
 		? router.get(
 				route("HospitalSearch", {
 					s: hospitalSearch.value,
 					p: props.PrefecturesData,
+					a: props.AnimalsData,
 				})
 		  )
 		: router.get(route("HospitalSearch"));
@@ -70,7 +72,7 @@ const clickModal = (eName) => {
 					<i_Plus />
 				</div>
 				<div @click="clickModal('openModalAnimal')" class="w-full f-doubutu i-input i-plus">
-					<input type="text" placeholder="診療対象動物" />
+					<input type="text" placeholder="診療対象動物" :value="AnimalsData" disabled />
 					<i_Doubutu />
 					<i_Plus />
 				</div>
