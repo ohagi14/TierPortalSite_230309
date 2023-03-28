@@ -10,6 +10,7 @@ defineProps({
 });
 </script>
 <template>
+	{{hospitals}}
 	<article
 		class="media border border-[#707070] mt-8 p-6"
 		v-for="hospital in hospitals.data"
@@ -49,43 +50,4 @@ defineProps({
 			</div>
 		</div>
 	</article>
-	<!-- <table class="table-auto w-full text-left whitespace-no-wrap">
-		<thead>
-			<tr>
-				<th
-					class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl"
-				>
-					ID
-				</th>
-				<th
-					class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-				>
-					タイトル
-				</th>
-				<th
-					class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
-				>
-					都道府県
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr v-for="hospital in hospitals.data" :key="hospital.id">
-				<td class="px-4 py-3">
-					<Link
-						class="text-blue-400"
-						:href="route('hospitals.show', { hospital: hospital.id })"
-					>
-						{{ hospital.id }}
-					</Link>
-				</td>
-				<td class="px-4 py-3">
-					{{ hospital.title }}
-				</td>
-				<td class="px-4 py-3">
-					{{ hospital.prefecture }}
-				</td>
-			</tr>
-		</tbody>
-	</table> -->
 </template>
