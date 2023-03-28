@@ -9,12 +9,15 @@ import Search from "@/Components/Parts/Search.vue";
 import Media from "@/Components/Common/Media.vue";
 
 import Prefectures from "@/Components/Parts/Prefectures.vue";
+import AnimalCategories from "@/Components/Parts/AnimalCategories.vue";
 import Modal from "@/Components/Modal.vue";
 
 defineProps({
 	prefectures: Array,
 	hospitals: Object,
+	animalCategories: Array,
 });
+//都道府県用
 const contentModal = ref(false);
 const openModal = () => {
 	contentModal.value = true;
@@ -26,16 +29,31 @@ const PrefecturesData = ref();
 const hospitalCheck = (data) => {
 	PrefecturesData.value = data.checkValue.value;
 };
+//動物用
+const contentModalAnimal = ref(false);
+const openModalAnimal = () => {
+	contentModalAnimal.value = true;
+};
+const closeModalAnimal = () => {
+	contentModalAnimal.value = false;
+};
+const AnimalsData = ref();
+const animalCheck = (data) => {
+	AnimalsData.value = data.checkValueAnimal.value;
+};
 </script>
 <template>
 	<Head title="一覧ページ" />
 	<Modal :show="contentModal" @close="closeModal">
 		<Prefectures :prefectures="prefectures" @hospitalCheck="hospitalCheck" />
 	</Modal>
+	<Modal :show="contentModalAnimal" @close="closeModalAnimal">
+		<AnimalCategories :animalCategories="animalCategories" @animalCheck="animalCheck" />
+	</Modal>
 	<LayoutBase>
 		<Header />
 		<template #contents>
-			<Search @openModal="openModal" :PrefecturesData="PrefecturesData" />
+			<Search @openModal="openModal" @openModalAnimal="openModalAnimal" :PrefecturesData="PrefecturesData" :AnimalsData="AnimalsData" />
 			<section class="search-basic">
 				<div class="l-container">
 					<div class="search-header flex justify-between mt-12">

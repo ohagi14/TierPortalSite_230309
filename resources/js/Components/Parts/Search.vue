@@ -11,23 +11,27 @@ import i_Plus from "@/Components/Icon/Plus.vue";
 // 一度変数にsetupする必要あり！
 const props = defineProps({
 	PrefecturesData: Array,
+	AnimalsData: Array,
 });
 const hospitalSearch = ref();
 const searchHospitals = () => {
 	// ショートハンド[条件 ? 処理 : 処理 ;] (AAA > BBB) ? CCC = true : DDD = true;
-	hospitalSearch.value || props.PrefecturesData
+	hospitalSearch.value || props.PrefecturesData || props.AnimalsData
 		? router.get(
 				route("HospitalSearch", {
 					s: hospitalSearch.value,
 					p: props.PrefecturesData,
+					a: props.AnimalsData,
 				})
 		  )
 		: router.get(route("HospitalSearch"));
 };
-//都道府県モーダル
+//都道府県モーダル｜動物モーダル
 // > thisなどでクリック対象変更
-const emit = defineEmits(["openModal"]);
-const clickModal = () => emit("openModal");
+const emit = defineEmits(["openModal", "openModalAnimal"]);
+const clickModal = (eName) => {
+	emit(eName);
+};
 </script>
 <template>
 	<section class="mt-16 py-16 bg-blueD8">
@@ -43,7 +47,7 @@ const clickModal = () => emit("openModal");
 					<i_Search />
 				</div>
 				<div
-					@click="clickModal"
+					@click="clickModal('openModal')"
 					class="w-full f-japan i-input bg-white i-plus max-w-[210px]"
 				>
 					<input
@@ -56,8 +60,13 @@ const clickModal = () => emit("openModal");
 					<i_Japan />
 					<i_Plus />
 				</div>
-				<div class="w-full f-doubutu i-input bg-white i-plus max-w-[210px]">
-					<input type="text" placeholder="診療対象動物" />
+				<div @click="clickModal('openModalAnimal')" class="w-full f-doubutu i-input bg-white i-plus max-w-[210px]">
+					<input
+						type="text"
+						placeholder="診療対象動物"
+						:value="AnimalsData"
+						disabled
+					/>
 					<i_Doubutu />
 					<i_Plus />
 				</div>
