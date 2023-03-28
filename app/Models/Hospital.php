@@ -52,7 +52,7 @@ class Hospital extends Model
 		if (!empty($input)) {
 			$query = $query->where(function ($query) use ($input) {
 				foreach ($input as $value) {
-					$query->orWhere('animal', 'like', '%' . $value . '%');
+					$query->orWhere('animal_category', 'like', '%' . $value . '%');
 				}
 			});
 		}
