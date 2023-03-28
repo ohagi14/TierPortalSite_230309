@@ -21,6 +21,7 @@ module.exports = {
 				'subSecond': '#cbc56d',
 				'card': '#E5E7EB',
 				'copyright': '#F3F4F6',
+				'orange100': '#FDF4F0',
 			},
 		},
 	},

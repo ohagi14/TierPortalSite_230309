@@ -47,7 +47,10 @@ const animalCheck = (data) => {
 		<Prefectures :prefectures="prefectures" @hospitalCheck="hospitalCheck" />
 	</Modal>
 	<Modal :show="contentModalAnimal" @close="closeModalAnimal">
-		<AnimalCategories :animalCategories="animalCategories" @animalCheck="animalCheck" />
+		<AnimalCategories
+			:animalCategories="animalCategories"
+			@animalCheck="animalCheck"
+		/>
 	</Modal>
 	<LayoutBase>
 		<template #contents>
@@ -61,10 +64,33 @@ const animalCheck = (data) => {
 			</section>
 			<section class="search-basic">
 				<div class="l-container w1000">
-					<TabBasic @openModal="openModal" @openModalAnimal="openModalAnimal" :PrefecturesData="PrefecturesData" :AnimalsData="AnimalsData" />
+					<TabBasic
+						@openModal="openModal"
+						@openModalAnimal="openModalAnimal"
+						:PrefecturesData="PrefecturesData"
+						:AnimalsData="AnimalsData"
+					/>
 				</div>
 			</section>
-			<section class="pickup mt-16">
+			<section class="news bg-orange100 py-16">
+				<div class="l-container max-w-[808px]">
+					<div class="text-main mb-8 md:flex items-center gap-x-4">
+						<h2 class="text-2xl font-bold">NEWS</h2>
+						<p class="text-sm">Tierからのお知らせ</p>
+					</div>
+					<template v-for="i in 3">
+						<article class="news-list border-b pb-6 mt-6">
+							<div class="md:flex gap-x-4">
+								<time class="text-xs">yyyy.mm.dd</time>
+								<h3 class="text-sm mt-1 md:mt-0">
+									最新の新着情報テキストが入ります最新の新着情報テキストが入ります最新の新着情報テキストが入ります最新の新着情報テキストが入ります
+								</h3>
+							</div>
+						</article>
+					</template>
+				</div>
+			</section>
+			<!-- <section class="pickup mt-16">
 				<div class="l-container">
 					<div class="c-title">
 						<h2><i_Doubutu />ピックアップ</h2>
@@ -111,7 +137,7 @@ const animalCheck = (data) => {
 						{{ hospitals }}
 					</div>
 				</div>
-			</section>
+			</section> -->
 		</template>
 	</LayoutBase>
 </template>
