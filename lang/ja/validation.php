@@ -156,6 +156,7 @@ return [
     'attributes' => [
         'title' => 'タイトル',
         'sub_title' => 'サブタイトル',
+				'animal_category' => '分類',
     ],
 
 ];

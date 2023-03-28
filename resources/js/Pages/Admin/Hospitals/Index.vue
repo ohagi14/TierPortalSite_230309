@@ -51,7 +51,7 @@ defineProps({
 											<th
 												class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
 											>
-												No.
+												動物カテゴリ
 											</th>
 											<th
 												class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"
@@ -76,7 +76,7 @@ defineProps({
 												{{ hospital.title }}
 											</td>
 											<td class="px-4 py-3">
-												{{ hospital.sample_num }}
+												{{ hospital.animal_category }}
 											</td>
 											<td class="px-4 py-3">
 												<span v-if="hospital.is_selling === 1">公開中</span>

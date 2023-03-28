@@ -11,6 +11,7 @@ defineProps({
 const form = reactive({
 	title: null,
 	sub_title: null,
+	animal_category: null,
 });
 
 const storeHospital = () => {
@@ -109,14 +110,31 @@ const storeHospital = () => {
 										</div>
 										<div class="p-2 w-full">
 											<div class="relative">
-												<template v-for="category in categories">
-													<input
+												<select name="animal_category" v-model="form.animal_category">
+													<option>分類を選択してください</option>
+													<template
+														v-for="category in categories"
+														:key="category.id"
+													>
+														<option :value="category.id">
+															{{ category.name }}
+														</option>
+													</template>
+												</select>
+												<div class="mt-2" v-if="errors.animal_category">
+													<p class="text-sm text-red-600">
+														{{ errors.animal_category }}
+													</p>
+												</div>
+												<!-- <input
 														type="checkbox"
-														value="{{ $category->id }}"
-														name="categories[]"
+														:value="category.id"
+														:id="'animal-' + category.id"
+														v-model="form.animal_category"
 													/>
-													<label for="categories[]">{{ category.name }}</label>
-												</template>
+													<label :for="'animal-' + category.id">{{
+														category.name
+													}}</label> -->
 											</div>
 										</div>
 										<div class="p-2 w-full">

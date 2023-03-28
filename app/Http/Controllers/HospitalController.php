@@ -22,7 +22,13 @@ class HospitalController extends Controller
 		// dd($g,$gt);
 
 		$hospitals = Hospital::searchHospitals()
-			->select('id', 'title', 'sample_num', 'is_selling')->paginate(50);
+			->select('b.id', 'b.title', 'b.sample_num', 'b.is_selling', 'r.name as animal_category')
+			->from('hospitals as b')
+			->join('animal_categories as r', function ($join) {
+				$join->on('b.animal_category', '=', 'r.id');
+			})
+			->orderBy('b.id', 'DESC')
+			->paginate(3);
 		// dd($hospitals);
 
 		return Inertia::render('Admin/Hospitals/Index', [
@@ -56,16 +62,8 @@ class HospitalController extends Controller
 			'contents' => $request->contents,
 			'prefecture' => $request->prefecture,
 			'sample_num' => $request->sample_num,
+			'animal_category' => $request->animal_category,
 		]);
-
-		$categoryNames = $request->input('categories');
-		dd($categoryNames);
-		if (!empty($categoryNames)) {
-			$categoryIds = AnimalCategory::whereIn('name', $categoryNames)
-				->pluck('id')
-				->toArray();
-			$hospital->categories()->sync($categoryIds);
-		}
 
 		return redirect()->route('hospitals.index')
 			->with([
@@ -117,6 +115,7 @@ class HospitalController extends Controller
 		$hospital->prefecture = $request->prefecture;
 		$hospital->sample_num = $request->sample_num;
 		$hospital->is_selling = $request->is_selling;
+		$hospital->animal_category = $request->animal_category;
 		$hospital->save();
 
 		return to_route('hospitals.index')

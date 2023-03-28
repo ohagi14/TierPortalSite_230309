@@ -21,6 +21,8 @@ return new class extends Migration
 			$table->integer('sample_num')->nullable();
 			$table->string('prefecture')->nullable();
 			$table->boolean('is_selling')->default(true);
+			// $table->foreignId('animal_categories')->nullable()->constrained()->onDelete('cascade');
+			$table->integer('animal_category')->nullable();
 			$table->timestamps();
 		});
 	}

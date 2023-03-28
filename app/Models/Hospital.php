@@ -17,6 +17,7 @@ class Hospital extends Model
 		'prefecture',
 		'sample_num',
 		'is_selling',
+		'animal_category',
 	];
 
 	public function scopeSearchHospitals($query, $input = null)
