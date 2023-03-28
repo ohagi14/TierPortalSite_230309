@@ -13,7 +13,6 @@ const form = reactive({
 	sub_title: props.hospital.sub_title,
 	contents: props.hospital.contents,
 	prefecture: props.hospital.prefecture,
-	sample_num: props.hospital.sample_num,
 	is_selling: props.hospital.is_selling,
 });
 
@@ -85,38 +84,6 @@ const updateHospital = (id) => {
 													v-model="form.contents"
 													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
 												></textarea>
-											</div>
-										</div>
-										<div class="p-2 w-full">
-											<div class="relative">
-												<label
-													for="sample_num"
-													class="leading-7 text-sm text-gray-600"
-													>都道府県</label
-												>
-												<input
-													type="text"
-													id="prefecture"
-													name="prefecture"
-													v-model="form.prefecture"
-													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-												/>
-											</div>
-										</div>
-										<div class="p-2 w-full">
-											<div class="relative">
-												<label
-													for="sample_num"
-													class="leading-7 text-sm text-gray-600"
-													>サンプル数字</label
-												>
-												<input
-													type="number"
-													id="sample_num"
-													name="sample_num"
-													v-model="form.sample_num"
-													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-												/>
 											</div>
 										</div>
 										<div class="p-2 w-full">

@@ -18,7 +18,6 @@ return new class extends Migration
 			$table->string('title');
 			$table->string('sub_title')->nullable(); //空でもOK
 			$table->string('contents')->nullable();
-			$table->integer('sample_num')->nullable();
 			$table->string('prefecture')->nullable();
 			$table->boolean('is_selling')->default(true);
 			// $table->foreignId('animal_categories')->nullable()->constrained()->onDelete('cascade');

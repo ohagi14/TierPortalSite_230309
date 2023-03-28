@@ -15,7 +15,6 @@ class Hospital extends Model
 		'sub_title',
 		'contents',
 		'prefecture',
-		'sample_num',
 		'is_selling',
 		'animal_category',
 	];
