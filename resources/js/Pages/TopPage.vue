@@ -74,7 +74,7 @@ const animalCheck = (data) => {
 			</section>
 			<section class="news bg-orange100 py-16">
 				<div class="l-container max-w-[808px]">
-					<div class="text-main mb-8 md:flex items-center gap-x-4">
+					<div class="text-main mb-8 md:flex items-center gap-x-4 text-center md:text-left">
 						<h2 class="text-2xl font-bold">NEWS</h2>
 						<p class="text-sm">Tierからのお知らせ</p>
 					</div>
