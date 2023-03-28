@@ -34,7 +34,6 @@ class HospitalController extends Controller
 	public function create()
 	{
 		$categories = AnimalCategory::all();
-		// dd($categories);
 		return Inertia::render('Admin/Hospitals/Create', compact('categories'));
 	}
 
@@ -83,8 +82,10 @@ class HospitalController extends Controller
 	 */
 	public function edit(Hospital $hospital)
 	{
+		$categories = AnimalCategory::all();
 		return Inertia::render('Admin/Hospitals/Edit', [
 			'hospital' => $hospital,
+			'categories' => $categories,
 		]);
 	}
 

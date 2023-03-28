@@ -26,7 +26,7 @@ class StoreHospitalRequest extends FormRequest
         return [
             'title' => ['required', 'max:50'],
             'sub_title' => ['max:50'],
-            'animal_category' => ['required','integer'],
+            'animal_category' => ['required'],
         ];
     }
 }

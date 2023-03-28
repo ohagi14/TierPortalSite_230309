@@ -94,13 +94,37 @@ const storeHospital = () => {
 										</div>
 										<div class="p-2 w-full">
 											<div class="relative">
-												<select name="animal_category" v-model="form.animal_category">
-													<option>分類を選択してください</option>
+												<label
+													for="sample_num"
+													class="leading-7 text-sm text-gray-600"
+													>都道府県</label
+												>
+												<input
+													type="text"
+													id="prefecture"
+													name="prefecture"
+													v-model="form.prefecture"
+													class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+												/>
+											</div>
+										</div>
+										<div class="p-2 w-full">
+											<div class="relative">
+												<label
+													for="contents"
+													class="leading-7 text-sm text-gray-600 block"
+													>動物カテゴリ選択</label
+												>
+												<select
+													name="animal_category"
+													value="test"
+													v-model="form.animal_category"
+												>
 													<template
 														v-for="category in categories"
 														:key="category.id"
 													>
-														<option :value="category.id">
+														<option :value="category.name">
 															{{ category.name }}
 														</option>
 													</template>
