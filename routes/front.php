@@ -53,3 +53,8 @@ Route::get('/hospital/search', function (Request $request) {
 		'animalCategories' => $animalCategories,
 	]);
 })->name('HospitalSearch');
+
+// 投稿のみに絞れるURLようにする。
+Route::get('/hospital/{id}', function (Request $request) {
+	return Inertia::render('Front/Hospital/Post');
+})->name('HospitalPost');

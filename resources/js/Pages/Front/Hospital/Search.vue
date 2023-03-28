@@ -62,7 +62,7 @@ const animalCheck = (data) => {
 				:PrefecturesData="PrefecturesData"
 				:AnimalsData="AnimalsData"
 			/>
-			<section class="search-basic">
+			<section class="search-basic mb-16">
 				<div class="l-container">
 					<div class="search-header flex justify-between mt-12">
 						<h2 class="text-3xl font-bold">動物病院の検索結果</h2>
