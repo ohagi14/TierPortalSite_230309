@@ -1,5 +1,9 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import i_Map from "@/Components/Icon/Map.vue";
+import i_Train from "@/Components/Icon/Train.vue";
+import i_Doubutu from "@/Components/Icon/Doubutu.vue";
+import { nl2br } from "@/common";
 
 defineProps({
 	hospitals: Object,
@@ -33,8 +37,9 @@ defineProps({
 			</div>
 			<div class="media-right">
 				<h3>タイトル：{{ hospital.title }}</h3>
-				<p>住所：{{ hospital.prefecture }}</p>
-				<p>動物：{{ hospital.animal_category }}</p>
+				<p class="flex gap-x-2"><div class="w-[17px] h-[17px] mt-0.5"><i_Map class="w-full" /></div>{{ hospital.prefecture }}</p>
+				<p class="flex gap-x-2"><div class="w-[17px] h-[17px] mt-0.5"><i_Train class="w-full" /></div><span v-html="nl2br(hospital.train)"></span></p>
+				<p class="flex gap-x-2"><div class="w-[17px] h-[17px] mt-0.5"><i_Doubutu class="w-full" /></div>{{ hospital.animal_category }}</p>
 				診察時間-テーブル表記
 				<ul class="tag mt-4">
 					<li><a href="#">タグ名</a></li>

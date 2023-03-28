@@ -50,6 +50,7 @@ class HospitalController extends Controller
 			'sub_title' => $request->sub_title,
 			'contents' => $request->contents,
 			'prefecture' => $request->prefecture,
+			'train' => $request->train,
 			'animal_category' => $request->animal_category,
 		]);
 
@@ -103,6 +104,7 @@ class HospitalController extends Controller
 		$hospital->sub_title = $request->sub_title;
 		$hospital->contents = $request->contents;
 		$hospital->prefecture = $request->prefecture;
+		$hospital->train = $request->train;
 		$hospital->is_selling = $request->is_selling;
 		$hospital->animal_category = $request->animal_category;
 		$hospital->save();

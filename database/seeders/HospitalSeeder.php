@@ -22,6 +22,7 @@ class HospitalSeeder extends Seeder
 				'sub_title' => 'ドウブツビョウインタイトルイチ',
 				'contents' => '詳細内容',
 				'prefecture' => '北海道札幌市清田区北野3条3丁目1-1',
+				'train' => 'JRおおさか東線新加美駅から徒歩約11分',
 				'animal_category' => '犬',
 			],
 			[
@@ -29,6 +30,7 @@ class HospitalSeeder extends Seeder
 				'sub_title' => 'ソウエンドウブツビョウイン',
 				'contents' => '詳細内容',
 				'prefecture' => '北海道札幌市中央区北8条西19丁目35番地10',
+				'train' => 'JRおおさか東線新加美駅から徒歩約11分',
 				'animal_category' => '犬',
 			],
 			[
@@ -36,6 +38,7 @@ class HospitalSeeder extends Seeder
 				'sub_title' => 'ガーデンドウブツビョウイン',
 				'contents' => '詳細内容',
 				'prefecture' => '北海道札幌市中央区北2条西25-2-1',
+				'train' => 'JRおおさか東線新加美駅から徒歩約11分',
 				'animal_category' => '犬',
 			],
 			[
@@ -43,6 +46,7 @@ class HospitalSeeder extends Seeder
 				'sub_title' => 'マルヤマドウブツビョウイン',
 				'contents' => '詳細内容',
 				'prefecture' => '北海道札幌市中央区宮の森2条13丁目12-21',
+				'train' => 'JRおおさか東線新加美駅から徒歩約11分',
 				'animal_category' => '犬',
 			],
 			[
@@ -50,6 +54,7 @@ class HospitalSeeder extends Seeder
 				'sub_title' => 'エノモトイヌネコビョウイン',
 				'contents' => '詳細内容',
 				'prefecture' => '神奈川県相模原市緑区寸沢嵐848-1',
+				'train' => 'JRおおさか東線新加美駅から徒歩約11分',
 				'animal_category' => '猫',
 			],
 		]);

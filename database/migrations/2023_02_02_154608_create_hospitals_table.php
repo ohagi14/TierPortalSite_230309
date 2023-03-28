@@ -19,6 +19,7 @@ return new class extends Migration
 			$table->string('sub_title')->nullable(); //空でもOK
 			$table->string('contents')->nullable();
 			$table->string('prefecture')->nullable();
+			$table->string('train')->nullable();
 			$table->boolean('is_selling')->default(true);
 			// $table->foreignId('animal_categories')->nullable()->constrained()->onDelete('cascade');
 			$table->string('animal_category')->nullable();

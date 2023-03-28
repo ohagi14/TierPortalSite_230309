@@ -48,12 +48,20 @@ const animalCheck = (data) => {
 		<Prefectures :prefectures="prefectures" @hospitalCheck="hospitalCheck" />
 	</Modal>
 	<Modal :show="contentModalAnimal" @close="closeModalAnimal">
-		<AnimalCategories :animalCategories="animalCategories" @animalCheck="animalCheck" />
+		<AnimalCategories
+			:animalCategories="animalCategories"
+			@animalCheck="animalCheck"
+		/>
 	</Modal>
 	<LayoutBase>
 		<Header />
 		<template #contents>
-			<Search @openModal="openModal" @openModalAnimal="openModalAnimal" :PrefecturesData="PrefecturesData" :AnimalsData="AnimalsData" />
+			<Search
+				@openModal="openModal"
+				@openModalAnimal="openModalAnimal"
+				:PrefecturesData="PrefecturesData"
+				:AnimalsData="AnimalsData"
+			/>
 			<section class="search-basic">
 				<div class="l-container">
 					<div class="search-header flex justify-between mt-12">

@@ -33,7 +33,7 @@ Route::get('/', function () {
 })->name('TopPage');
 
 Route::get('/hospital', function (Request $request) {
-	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->animalCategoriesHospitals($request->a)->select('id', 'title', 'prefecture', 'animal_category')->paginate(10);
+	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->animalCategoriesHospitals($request->a)->paginate(10);
 	$animalCategories = AnimalCategory::all();
 
 	return Inertia::render('Front/Hospital/Index', [
@@ -44,7 +44,7 @@ Route::get('/hospital', function (Request $request) {
 })->name('HospitalIndex');
 
 Route::get('/hospital/search', function (Request $request) {
-	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->animalCategoriesHospitals($request->a)->select('id', 'title', 'prefecture', 'animal_category')->paginate(10);
+	$hospitals = Hospital::searchHospitals($request->s)->prefecturesHospitals($request->p)->animalCategoriesHospitals($request->a)->paginate(10);
 	$animalCategories = AnimalCategory::all();
 
 	return Inertia::render('Front/Hospital/Search', [
