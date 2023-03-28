@@ -10,7 +10,6 @@ defineProps({
 });
 </script>
 <template>
-	{{hospitals}}
 	<article
 		class="media border border-[#707070] mt-8 p-6"
 		v-for="hospital in hospitals.data"
