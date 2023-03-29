@@ -18,7 +18,7 @@ defineProps({
 		v-for="hospital in hospitals.data"
 		:key="hospital.id"
 	>
-		<a href="./1" target="_blank" class="media-wrap flex p-6">
+		<Link :href="route('HospitalPost', hospital.id)" target="_blank" class="media-wrap flex p-6">
 			<div class="media-left">
 				<figure>
 					<img
@@ -88,6 +88,6 @@ defineProps({
 					<li><a href="#">トリミングサロン</a></li>
 				</ul>
 			</div>
-		</a>
+		</Link>
 	</article>
 </template>

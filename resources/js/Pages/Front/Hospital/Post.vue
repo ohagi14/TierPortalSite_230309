@@ -44,9 +44,11 @@ import i_Doubutu from "@/Components/Icon/Doubutu.vue";
 							</li>
 						</ul>
 						<figure class="mt-6">
-							<img loading="lazy" src="https://placehold.jp/1920x1080.png">
+							<img loading="lazy" src="https://placehold.jp/1920x1080.png" />
 						</figure>
-						<table class="border-collapse border border-slate-500 w-full text-center mt-6">
+						<table
+							class="border-collapse border border-slate-500 w-full text-center mt-6"
+						>
 							<thead class="bg-slate-200">
 								<tr>
 									<th class="border border-slate-600 py-1">診療時間</th>
@@ -88,9 +90,11 @@ import i_Doubutu from "@/Components/Icon/Doubutu.vue";
 					</article>
 				</main>
 				<aside class="sidebar max-w-[300px]">
-					<div class="info p-3 bg-slate-100 ">
+					<div class="info p-3 bg-slate-100">
 						<div class="py-3 border">
-							<a href="#" target="_blank" rel="noopener noreferrer">公式サイト</a>
+							<a href="#" target="_blank" rel="noopener noreferrer"
+								>公式サイト</a
+							>
 						</div>
 						<div class="py-3 border border-main mt-3">
 							<a href="#" target="_blank" rel="noopener noreferrer"

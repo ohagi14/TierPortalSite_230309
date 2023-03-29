@@ -54,7 +54,10 @@ Route::get('/hospital/search', function (Request $request) {
 	]);
 })->name('HospitalSearch');
 
-// 投稿のみに絞れるURLようにする。
-Route::get('/hospital/{id}', function (Request $request) {
-	return Inertia::render('Front/Hospital/Post');
+// hospitalの投稿｜IDのみ表示
+Route::get('/hospital/{id}', function (Request $request, $id) {
+	$post = Hospital::where('id', $id)
+				// ->where('category', '投稿')
+				->firstOrFail();
+	return Inertia::render('Front/Hospital/Post', ['post' => $post]);
 })->name('HospitalPost');
