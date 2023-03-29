@@ -1,12 +1,19 @@
 <script setup>
 import { Head } from "@inertiajs/vue3";
 import { ref } from "vue";
+
+import { nl2br } from "@/common";
+
 import Header from "@/Components/Common/Header.vue";
 import LayoutBase from "@/Components/Common/LayoutBase.vue";
 
 import i_Map from "@/Components/Icon/Map.vue";
 import i_Train from "@/Components/Icon/Train.vue";
 import i_Doubutu from "@/Components/Icon/Doubutu.vue";
+
+defineProps({
+	post: Object,
+});
 </script>
 <template>
 	<Head title="投稿ページ" />
@@ -17,30 +24,27 @@ import i_Doubutu from "@/Components/Icon/Doubutu.vue";
 				<main class="w-full max-w-[940px]">
 					<article class="article-post">
 						<div class="border-b border-gray-500 border-dotted py-2">
-							<h1 class="text-2xl font-body">ノルド動物病院</h1>
-							<p class="text-xs">ノルドドウブツビョウイン</p>
+							<h1 class="text-2xl font-body">{{post.title}}</h1>
+							<p class="text-xs">{{post.sub_title}}</p>
 						</div>
 						<ul>
 							<li class="flex gap-x-2 text-sm mt-2">
 								<div class="w-[12px] h-[12px] mt-0.5">
 									<i_Map class="w-full" />
 								</div>
-								北海道札幌市清田区北野3条3丁目1-1
+								{{post.prefecture}}
 							</li>
 							<li class="flex gap-x-2 text-sm mt-2">
 								<div class="w-[12px] h-[12px] mt-0.5">
 									<i_Train class="w-full" />
 								</div>
-								<span>
-									JRおおさか東線新加美駅から徒歩約11分<br />
-									JRおおさか東線新加美駅から徒歩約11分
-								</span>
+								<span v-html="nl2br(post.train)"></span>
 							</li>
 							<li class="flex gap-x-2 text-sm mt-2">
 								<div class="w-[12px] h-[12px] mt-0.5">
 									<i_Doubutu class="w-full" />
 								</div>
-								犬
+								{{post.animal_category}}
 							</li>
 						</ul>
 						<figure class="mt-6">
