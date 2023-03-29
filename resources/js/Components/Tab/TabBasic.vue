@@ -60,7 +60,10 @@ const clickModal = (eName) => {
 				<i_Search />
 			</div>
 			<div class="flex gap-x-6 mt-8">
-				<div @click="clickModal('openModal')" class="w-full f-japan i-input i-plus">
+				<div
+					@click="clickModal('openModal')"
+					class="w-full f-japan i-input i-plus"
+				>
 					<input
 						type="text"
 						class="cursor-pointer"
@@ -71,8 +74,17 @@ const clickModal = (eName) => {
 					<i_Japan />
 					<i_Plus />
 				</div>
-				<div @click="clickModal('openModalAnimal')" class="w-full f-doubutu i-input i-plus">
-					<input type="text" placeholder="診療対象動物" :value="AnimalsData" disabled />
+				<div
+					@click="clickModal('openModalAnimal')"
+					class="w-full f-doubutu i-input i-plus"
+				>
+					<input
+						type="text"
+						class="cursor-pointer"
+						placeholder="診療対象動物"
+						:value="AnimalsData"
+						disabled
+					/>
 					<i_Doubutu />
 					<i_Plus />
 				</div>
